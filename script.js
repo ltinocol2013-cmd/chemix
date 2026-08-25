@@ -692,3 +692,165 @@ languageSelect.addEventListener(
 
     }
 );
+/* =========================================================
+   SISTEMA DE IDIOMAS
+========================================================= */
+
+let currentLanguage = "es";
+
+
+const languageSelect =
+    document.getElementById(
+        "language-select"
+    );
+
+
+function changeLanguage(language) {
+
+    currentLanguage = language;
+
+
+    const text =
+        translations[language];
+
+
+    if (!text) {
+        return;
+    }
+
+
+    /* TÍTULO */
+
+    document.title =
+        text.pageTitle;
+
+
+    document.documentElement.lang =
+        language;
+
+
+    /* HEADER */
+
+    document.getElementById(
+        "subtitle"
+    ).textContent =
+        text.subtitle;
+
+
+    /* TABLA PERIÓDICA */
+
+    document.getElementById(
+        "periodic-title"
+    ).textContent =
+        text.periodicTable;
+
+
+    document.getElementById(
+        "periodic-description"
+    ).textContent =
+        text.periodicDescription;
+
+
+    /* LABORATORIO */
+
+    document.getElementById(
+        "laboratory-title"
+    ).textContent =
+        text.laboratory;
+
+
+    document.getElementById(
+        "laboratory-description"
+    ).textContent =
+        text.laboratoryDescription;
+
+
+    /* BOTÓN */
+
+    document.getElementById(
+        "combine-button"
+    ).textContent =
+        text.combine;
+
+
+    /* RESULTADO VACÍO */
+
+    document.getElementById(
+        "empty-title"
+    ).textContent =
+        text.emptyLaboratory;
+
+
+    document.getElementById(
+        "empty-description"
+    ).textContent =
+        text.emptyLaboratoryDescription;
+
+
+    /* FOOTER */
+
+    document.getElementById(
+        "footer-text"
+    ).textContent =
+        text.footer;
+
+
+    document.getElementById(
+        "footer-small"
+    ).textContent =
+        text.footerSmall;
+
+
+    /* GUARDAR IDIOMA */
+
+    localStorage.setItem(
+        "chemix-language",
+        language
+    );
+
+}
+
+
+/* =========================================================
+   CAMBIAR IDIOMA
+========================================================= */
+
+languageSelect.addEventListener(
+    "change",
+    () => {
+
+        changeLanguage(
+            languageSelect.value
+        );
+
+    }
+);
+
+
+/* =========================================================
+   RECUPERAR IDIOMA
+========================================================= */
+
+const savedLanguage =
+    localStorage.getItem(
+        "chemix-language"
+    );
+
+
+if (
+    savedLanguage &&
+    translations[savedLanguage]
+) {
+
+    languageSelect.value =
+        savedLanguage;
+
+    changeLanguage(
+        savedLanguage
+    );
+
+} else {
+
+    changeLanguage("es");
+
+}
