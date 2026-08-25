@@ -4,25 +4,18 @@
     padding: 0;
 }
 
-
 :root {
-
     --background: #080b12;
     --surface: #101520;
     --surface-2: #161d2a;
     --surface-3: #1c2534;
-
     --border: #293448;
-
     --text: #f4f7fb;
     --text-secondary: #9da8ba;
-
     --accent: #55d6be;
 }
 
-
 body {
-
     min-height: 100vh;
 
     background:
@@ -46,6 +39,7 @@ body {
 /* HEADER */
 
 .header {
+    position: relative;
 
     text-align: center;
 
@@ -66,8 +60,66 @@ body {
 }
 
 
-.logo {
+/* CAMBIADOR DE IDIOMA */
 
+.language-selector {
+    position: absolute;
+
+    top: 20px;
+    right: 25px;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 5px;
+
+    padding:
+        6px 9px;
+
+    border:
+        1px solid
+        var(--border);
+
+    border-radius: 8px;
+
+    background:
+        var(--surface);
+
+    color:
+        var(--text-secondary);
+
+    font-size: 12px;
+}
+
+.language-selector select {
+    border: none;
+
+    outline: none;
+
+    background:
+        transparent;
+
+    color:
+        var(--text);
+
+    font-size: 12px;
+
+    cursor: pointer;
+}
+
+.language-selector option {
+    background:
+        var(--surface);
+
+    color:
+        var(--text);
+}
+
+
+/* LOGO */
+
+.logo {
     display: flex;
 
     align-items: center;
@@ -81,18 +133,14 @@ body {
     font-weight: 800;
 }
 
-
 .logo-icon {
-
     font-size: 42px;
 
     color:
         var(--accent);
 }
 
-
 .subtitle {
-
     margin-top: 8px;
 
     color:
@@ -105,7 +153,6 @@ body {
 /* MAIN */
 
 main {
-
     width: 100%;
 
     max-width: 1550px;
@@ -122,22 +169,17 @@ main {
 /* TITLES */
 
 .section-title {
-
     margin-bottom: 25px;
 }
 
-
 .section-title h1,
 .section-title h2 {
-
     font-size: 27px;
 
     margin-bottom: 6px;
 }
 
-
 .section-title p {
-
     color:
         var(--text-secondary);
 
@@ -148,13 +190,10 @@ main {
 /* PERIODIC TABLE */
 
 .periodic-section {
-
     width: 100%;
 }
 
-
 .periodic-table {
-
     display: grid;
 
     grid-template-columns:
@@ -172,7 +211,6 @@ main {
 /* ELEMENTOS */
 
 .element {
-
     position: relative;
 
     display: flex;
@@ -189,8 +227,7 @@ main {
         1px solid
         rgba(255,255,255,0.12);
 
-    border-radius:
-        8px;
+    border-radius: 8px;
 
     cursor: grab;
 
@@ -202,9 +239,7 @@ main {
         border-color 0.15s ease;
 }
 
-
 .element:hover {
-
     transform:
         translateY(-4px)
         scale(1.03);
@@ -218,18 +253,14 @@ main {
     z-index: 5;
 }
 
-
 .element:active {
-
     cursor: grabbing;
 
     transform:
         scale(0.96);
 }
 
-
 .element .number {
-
     position: absolute;
 
     top: 5px;
@@ -240,17 +271,13 @@ main {
     opacity: 0.8;
 }
 
-
 .element .symbol {
-
     font-size: 22px;
 
     font-weight: 800;
 }
 
-
 .element .name {
-
     margin-top: 5px;
 
     max-width: 95%;
@@ -311,7 +338,6 @@ main {
 /* LEYENDA */
 
 .legend {
-
     display: flex;
 
     flex-wrap: wrap;
@@ -326,9 +352,7 @@ main {
     font-size: 12px;
 }
 
-
 .legend div {
-
     display: flex;
 
     align-items: center;
@@ -336,9 +360,7 @@ main {
     gap: 6px;
 }
 
-
 .legend-color {
-
     width: 12px;
 
     height: 12px;
@@ -352,7 +374,6 @@ main {
 /* LABORATORIO */
 
 .laboratory {
-
     margin-top: 70px;
 
     padding: 30px;
@@ -376,10 +397,9 @@ main {
 }
 
 
-/* ÁREA DE REACCIÓN */
+/* REACCIÓN */
 
 .reaction-area {
-
     display: flex;
 
     align-items: center;
@@ -397,7 +417,6 @@ main {
 /* SLOTS */
 
 .element-slot {
-
     width: 125px;
 
     height: 125px;
@@ -427,9 +446,7 @@ main {
     user-select: none;
 }
 
-
 .element-slot:hover {
-
     border-color:
         var(--accent);
 
@@ -437,9 +454,7 @@ main {
         var(--accent);
 }
 
-
 .element-slot.drag-over {
-
     border-color:
         var(--accent);
 
@@ -450,9 +465,7 @@ main {
         scale(1.05);
 }
 
-
 .element-slot.filled {
-
     border:
         2px solid
         rgba(255,255,255,0.2);
@@ -462,9 +475,7 @@ main {
     position: relative;
 }
 
-
 .element-slot .number {
-
     position: absolute;
 
     top: 9px;
@@ -475,17 +486,13 @@ main {
     opacity: 0.8;
 }
 
-
 .element-slot .symbol {
-
     font-size: 32px;
 
     font-weight: 800;
 }
 
-
 .element-slot .name {
-
     margin-top: 7px;
 
     max-width: 90%;
@@ -503,7 +510,6 @@ main {
 /* PLUS */
 
 .plus-symbol {
-
     font-size: 30px;
 
     color:
@@ -514,7 +520,6 @@ main {
 /* FLECHA */
 
 .arrow {
-
     font-size: 38px;
 
     color:
@@ -525,7 +530,6 @@ main {
 /* BOTÓN */
 
 .combine-button {
-
     padding:
         14px
         22px;
@@ -550,9 +554,7 @@ main {
         0.15s ease;
 }
 
-
 .combine-button:hover {
-
     background:
         #73e4cf;
 
@@ -560,9 +562,7 @@ main {
         translateY(-2px);
 }
 
-
 .combine-button:active {
-
     transform:
         scale(0.96);
 }
@@ -571,7 +571,6 @@ main {
 /* RESULTADO */
 
 .result {
-
     margin-top: 30px;
 
     min-height: 160px;
@@ -588,9 +587,7 @@ main {
         var(--surface-2);
 }
 
-
 .empty-result {
-
     display: flex;
 
     flex-direction: column;
@@ -604,23 +601,17 @@ main {
     text-align: center;
 }
 
-
 .empty-icon {
-
     font-size: 35px;
 
     margin-bottom: 8px;
 }
 
-
 .empty-result h3 {
-
     margin-bottom: 5px;
 }
 
-
 .empty-result p {
-
     color:
         var(--text-secondary);
 
@@ -631,13 +622,10 @@ main {
 /* RESULTADOS */
 
 .combination-result {
-
     text-align: center;
 }
 
-
 .reaction {
-
     font-size: 23px;
 
     font-weight: 700;
@@ -645,18 +633,14 @@ main {
     margin-bottom: 15px;
 }
 
-
 .combination-result h3 {
-
     margin-bottom: 20px;
 
     color:
         var(--accent);
 }
 
-
 .products-list {
-
     display: grid;
 
     grid-template-columns:
@@ -668,9 +652,7 @@ main {
     gap: 15px;
 }
 
-
 .product {
-
     padding: 20px;
 
     border:
@@ -685,9 +667,7 @@ main {
     text-align: center;
 }
 
-
 .product-formula {
-
     font-size: 34px;
 
     font-weight: 800;
@@ -695,17 +675,13 @@ main {
     margin-bottom: 10px;
 }
 
-
 .product-name {
-
     font-weight: 700;
 
     margin-bottom: 5px;
 }
 
-
 .product-type {
-
     display: inline-block;
 
     padding:
@@ -725,9 +701,7 @@ main {
     margin-bottom: 10px;
 }
 
-
 .product p {
-
     color:
         var(--text-secondary);
 
@@ -740,7 +714,6 @@ main {
 /* FOOTER */
 
 footer {
-
     padding:
         30px
         20px
@@ -756,9 +729,7 @@ footer {
         var(--border);
 }
 
-
 .footer-small {
-
     margin-top: 7px;
 
     font-size: 11px;
@@ -772,77 +743,60 @@ footer {
 @media (max-width: 1000px) {
 
     main {
-
         padding:
             25px
             15px
             50px;
     }
 
-
     .periodic-table {
-
         min-width: 900px;
     }
 
-
     .periodic-section {
-
         overflow-x: auto;
     }
 }
 
-
 @media (max-width: 600px) {
 
     .logo {
-
         font-size: 30px;
     }
 
-
     .subtitle {
-
         font-size: 12px;
     }
 
+    .language-selector {
+        top: 12px;
+        right: 12px;
+    }
 
     .laboratory {
-
         padding:
             20px
             12px;
     }
 
-
     .reaction-area {
-
         gap: 8px;
     }
 
-
     .element-slot {
-
         width: 95px;
-
         height: 95px;
     }
 
-
     .element-slot .symbol {
-
         font-size: 25px;
     }
 
-
     .plus-symbol {
-
         font-size: 22px;
     }
 
-
     .arrow {
-
         font-size: 28px;
     }
 }
