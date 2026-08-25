@@ -11,14 +11,12 @@
 
     <title>Chemix — Laboratorio de Química</title>
 
-    <!-- FAVICON -->
     <link
         rel="icon"
         href="./favicon.png"
         type="image/png"
     >
 
-    <!-- CSS -->
     <link
         rel="stylesheet"
         href="./style.css"
@@ -27,13 +25,29 @@
 
 <body>
 
-    <!-- HEADER -->
     <header class="header">
 
-        <div class="logo">
-            <span class="logo-icon">⚗</span>
-            <span>Chemix</span>
+        <!-- CAMBIADOR DE IDIOMA -->
+        <div class="language-selector">
+
+            <span>🌐</span>
+
+            <select id="language-select">
+                <option value="es">ES</option>
+                <option value="en">EN</option>
+            </select>
+
         </div>
+
+
+        <div class="logo">
+
+            <span class="logo-icon">⚗</span>
+
+            <span>Chemix</span>
+
+        </div>
+
 
         <p class="subtitle">
             Explora los elementos y descubre qué ocurre al combinarlos
@@ -43,10 +57,6 @@
 
 
     <main>
-
-        <!-- =========================
-             TABLA PERIÓDICA
-        ========================== -->
 
         <section class="periodic-section">
 
@@ -67,8 +77,6 @@
                 class="periodic-table"
             ></div>
 
-
-            <!-- LEYENDA -->
 
             <div class="legend">
 
@@ -127,10 +135,6 @@
         </section>
 
 
-        <!-- =========================
-             LABORATORIO
-        ========================== -->
-
         <section class="laboratory">
 
             <div class="section-title">
@@ -146,8 +150,6 @@
 
             <div class="reaction-area">
 
-                <!-- PRIMER ELEMENTO -->
-
                 <div
                     class="element-slot"
                     data-slot="0"
@@ -156,14 +158,10 @@
                 </div>
 
 
-                <!-- SIGNO MÁS -->
-
                 <div class="plus-symbol">
                     +
                 </div>
 
-
-                <!-- SEGUNDO ELEMENTO -->
 
                 <div
                     class="element-slot"
@@ -173,14 +171,10 @@
                 </div>
 
 
-                <!-- FLECHA -->
-
                 <div class="arrow">
                     →
                 </div>
 
-
-                <!-- BOTÓN -->
 
                 <button
                     id="combine-button"
@@ -192,8 +186,6 @@
 
             </div>
 
-
-            <!-- RESULTADO -->
 
             <div
                 id="result"
@@ -223,10 +215,6 @@
     </main>
 
 
-    <!-- =========================
-         FOOTER
-    ========================== -->
-
     <footer>
 
         <p>
@@ -239,17 +227,6 @@
 
     </footer>
 
-
-    <!-- =========================
-         JAVASCRIPT
-    ========================== -->
-
-    <!--
-        IMPORTANTE:
-        combinations.js debe cargarse primero,
-        porque contiene la base de datos
-        de las combinaciones.
-    -->
 
     <script src="./combinations.js"></script>
 
