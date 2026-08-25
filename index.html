@@ -2,92 +2,47 @@
 <html lang="es">
 
 <head>
-
     <meta charset="UTF-8">
 
-    <meta
-        name="viewport"
-        content="width=device-width, initial-scale=1.0"
-    >
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title id="page-title">
         Chemix — Laboratorio de Química
     </title>
 
-    <link
-        rel="icon"
-        href="./favicon.png"
-        type="image/png"
-    >
+    <link rel="icon" href="./favicon.png" type="image/png">
 
-    <link
-        rel="stylesheet"
-        href="./style.css"
-    >
-
+    <link rel="stylesheet" href="./style.css">
 </head>
-
 
 <body>
 
-
     <header class="header">
 
-
-        <!-- CAMBIADOR DE IDIOMA -->
-
         <div class="language-selector">
-
             <span>🌐</span>
 
             <select id="language-select">
-
-                <option value="es">
-                    ES
-                </option>
-
-                <option value="en">
-                    EN
-                </option>
-
+                <option value="es">ES</option>
+                <option value="en">EN</option>
             </select>
-
         </div>
-
-
-        <!-- LOGO -->
 
         <div class="logo">
-
-            <span class="logo-icon">
-                ⚗
-            </span>
-
-            <span>
-                Chemix
-            </span>
-
+            <span class="logo-icon">⚗</span>
+            <span>Chemix</span>
         </div>
 
-
-        <p
-            class="subtitle"
-            id="subtitle"
-        >
+        <p class="subtitle" id="subtitle">
             Explora los elementos y descubre qué ocurre al combinarlos
         </p>
-
 
     </header>
 
 
     <main>
 
-
-        <!-- TABLA PERIÓDICA -->
-
         <section class="periodic-section">
-
 
             <div class="section-title">
 
@@ -96,20 +51,15 @@
                 </h1>
 
                 <p id="periodic-description">
-                    Arrastra un elemento al laboratorio
-                    o haz clic sobre él.
+                    Arrastra un elemento al laboratorio o haz clic sobre él.
                 </p>
 
             </div>
-
 
             <div
                 id="periodic-table"
                 class="periodic-table"
             ></div>
-
-
-            <!-- LEYENDA -->
 
             <div class="legend">
 
@@ -165,14 +115,10 @@
 
             </div>
 
-
         </section>
 
 
-        <!-- LABORATORIO -->
-
         <section class="laboratory">
-
 
             <div class="section-title">
 
@@ -186,9 +132,7 @@
 
             </div>
 
-
             <div class="reaction-area">
-
 
                 <div
                     class="element-slot"
@@ -197,11 +141,9 @@
                     +
                 </div>
 
-
                 <div class="plus-symbol">
                     +
                 </div>
-
 
                 <div
                     class="element-slot"
@@ -210,11 +152,9 @@
                     +
                 </div>
 
-
                 <div class="arrow">
                     →
                 </div>
-
 
                 <button
                     id="combine-button"
@@ -224,16 +164,10 @@
                     Combinar
                 </button>
 
-
             </div>
 
 
-            <!-- RESULTADO -->
-
-            <div
-                id="result"
-                class="result"
-            >
+            <div id="result" class="result">
 
                 <div class="empty-result">
 
@@ -253,14 +187,10 @@
 
             </div>
 
-
         </section>
-
 
     </main>
 
-
-    <!-- FOOTER -->
 
     <footer>
 
@@ -278,14 +208,13 @@
     </footer>
 
 
-    <!-- JAVASCRIPT -->
+    <!-- IMPORTANTE: ESTE ORDEN NO CAMBIAR -->
 
     <script src="./combinations.js"></script>
 
-    <script src="./languages.js"></script>
-
     <script src="./script.js"></script>
 
+    <script src="./languages.js"></script>
 
 </body>
 
