@@ -672,3 +672,23 @@ console.log(
 crearTabla();
 
 actualizarSlots();
+/* =========================================================
+   CAMBIADOR DE IDIOMA
+========================================================= */
+
+const languageSelect =
+    document.getElementById("language-select");
+
+languageSelect.addEventListener(
+    "change",
+    () => {
+
+        const language =
+            languageSelect.value;
+
+        console.log(
+            `Idioma seleccionado: ${language}`
+        );
+
+    }
+);
