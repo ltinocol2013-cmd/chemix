@@ -2,6 +2,7 @@
 <html lang="es">
 
 <head>
+
     <meta charset="UTF-8">
 
     <meta
@@ -9,7 +10,9 @@
         content="width=device-width, initial-scale=1.0"
     >
 
-    <title>Chemix — Laboratorio de Química</title>
+    <title id="page-title">
+        Chemix — Laboratorio de Química
+    </title>
 
     <link
         rel="icon"
@@ -21,50 +24,78 @@
         rel="stylesheet"
         href="./style.css"
     >
+
 </head>
+
 
 <body>
 
+
     <header class="header">
 
+
         <!-- CAMBIADOR DE IDIOMA -->
+
         <div class="language-selector">
 
             <span>🌐</span>
 
             <select id="language-select">
-                <option value="es">ES</option>
-                <option value="en">EN</option>
+
+                <option value="es">
+                    ES
+                </option>
+
+                <option value="en">
+                    EN
+                </option>
+
             </select>
 
         </div>
 
 
+        <!-- LOGO -->
+
         <div class="logo">
 
-            <span class="logo-icon">⚗</span>
+            <span class="logo-icon">
+                ⚗
+            </span>
 
-            <span>Chemix</span>
+            <span>
+                Chemix
+            </span>
 
         </div>
 
 
-        <p class="subtitle">
+        <p
+            class="subtitle"
+            id="subtitle"
+        >
             Explora los elementos y descubre qué ocurre al combinarlos
         </p>
+
 
     </header>
 
 
     <main>
 
+
+        <!-- TABLA PERIÓDICA -->
+
         <section class="periodic-section">
+
 
             <div class="section-title">
 
-                <h1>Tabla periódica</h1>
+                <h1 id="periodic-title">
+                    Tabla periódica
+                </h1>
 
-                <p>
+                <p id="periodic-description">
                     Arrastra un elemento al laboratorio
                     o haz clic sobre él.
                 </p>
@@ -77,6 +108,8 @@
                 class="periodic-table"
             ></div>
 
+
+            <!-- LEYENDA -->
 
             <div class="legend">
 
@@ -132,16 +165,22 @@
 
             </div>
 
+
         </section>
 
 
+        <!-- LABORATORIO -->
+
         <section class="laboratory">
+
 
             <div class="section-title">
 
-                <h2>Laboratorio</h2>
+                <h2 id="laboratory-title">
+                    Laboratorio
+                </h2>
 
-                <p>
+                <p id="laboratory-description">
                     Coloca dos elementos para intentar combinarlos.
                 </p>
 
@@ -149,6 +188,7 @@
 
 
             <div class="reaction-area">
+
 
                 <div
                     class="element-slot"
@@ -184,8 +224,11 @@
                     Combinar
                 </button>
 
+
             </div>
 
+
+            <!-- RESULTADO -->
 
             <div
                 id="result"
@@ -198,11 +241,11 @@
                         ⚗️
                     </div>
 
-                    <h3>
+                    <h3 id="empty-title">
                         Laboratorio vacío
                     </h3>
 
-                    <p>
+                    <p id="empty-description">
                         Selecciona dos elementos para comenzar.
                     </p>
 
@@ -210,27 +253,39 @@
 
             </div>
 
+
         </section>
+
 
     </main>
 
 
+    <!-- FOOTER -->
+
     <footer>
 
-        <p>
+        <p id="footer-text">
             Chemix — Laboratorio educativo de química
         </p>
 
-        <p class="footer-small">
+        <p
+            class="footer-small"
+            id="footer-small"
+        >
             Proyecto educativo creado con HTML, CSS y JavaScript
         </p>
 
     </footer>
 
 
+    <!-- JAVASCRIPT -->
+
     <script src="./combinations.js"></script>
 
+    <script src="./languages.js"></script>
+
     <script src="./script.js"></script>
+
 
 </body>
 
