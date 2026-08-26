@@ -185,7 +185,6 @@ function crearTabla() {
 
     tabla.innerHTML = "";
 
-
     elementos.forEach(
         elemento => {
 
@@ -194,26 +193,20 @@ function crearTabla() {
                     "div"
                 );
 
-
             tarjeta.className =
                 `element ${elemento.categoria}`;
-
 
             tarjeta.style.gridColumn =
                 elemento.grupo;
 
-
             tarjeta.style.gridRow =
                 elemento.periodo;
-
 
             tarjeta.draggable =
                 true;
 
-
             tarjeta.dataset.numero =
                 elemento.numero;
-
 
             tarjeta.innerHTML = `
 
@@ -232,7 +225,9 @@ function crearTabla() {
             `;
 
 
-            /* CLICK */
+            /* =================================================
+               CLICK / TOQUE
+            ================================================= */
 
             tarjeta.addEventListener(
                 "click",
@@ -246,7 +241,9 @@ function crearTabla() {
             );
 
 
-            /* DRAG */
+            /* =================================================
+               DRAG
+            ================================================= */
 
             tarjeta.addEventListener(
                 "dragstart",
@@ -275,15 +272,21 @@ function crearTabla() {
    COLOCAR ELEMENTO
 ========================================================= */
 
-function colocarElemento(
-    elemento
-) {
+function colocarElemento(elemento) {
+
+    /*
+       PRIMERO:
+       buscar un espacio vacío.
+    */
 
     let posicion =
-        seleccionados.indexOf(
-            null
-        );
+        seleccionados.indexOf(null);
 
+
+    /*
+       SI LOS DOS ESPACIOS ESTÁN OCUPADOS:
+       reemplazar el segundo.
+    */
 
     if (posicion === -1) {
 
@@ -360,6 +363,11 @@ function actualizarSlots() {
 slots.forEach(
     (slot, index) => {
 
+
+        /* =================================================
+           DRAGOVER
+        ================================================= */
+
         slot.addEventListener(
             "dragover",
             evento => {
@@ -374,6 +382,10 @@ slots.forEach(
         );
 
 
+        /* =================================================
+           DRAGLEAVE
+        ================================================= */
+
         slot.addEventListener(
             "dragleave",
             () => {
@@ -385,6 +397,10 @@ slots.forEach(
             }
         );
 
+
+        /* =================================================
+           DROP
+        ================================================= */
 
         slot.addEventListener(
             "drop",
@@ -419,6 +435,11 @@ slots.forEach(
                 }
 
 
+                /*
+                   AQUÍ SE PERMITE REEMPLAZAR
+                   EL ELEMENTO ACTUAL.
+                */
+
                 seleccionados[index] =
                     elemento;
 
@@ -429,7 +450,10 @@ slots.forEach(
         );
 
 
-        /* DOBLE CLICK = ELIMINAR */
+        /* =================================================
+           DOBLE CLIC / DOBLE TOQUE
+           = ELIMINAR ELEMENTO
+        ================================================= */
 
         slot.addEventListener(
             "dblclick",
@@ -516,10 +540,9 @@ function combinar() {
         );
 
 
-    /*
-       AQUÍ ESTÁ LA CONEXIÓN CON
-       combinations.js
-    */
+    /* =================================================
+       CONEXIÓN CON combinations.js
+    ================================================= */
 
     const productos =
         combinations[clave];
@@ -637,7 +660,7 @@ function combinar() {
 
 
 /* =========================================================
-   BOTÓN
+   BOTÓN COMBINAR
 ========================================================= */
 
 botonCombinar.addEventListener(
@@ -672,166 +695,3 @@ console.log(
 crearTabla();
 
 actualizarSlots();
-
-/* =========================================================
-   SISTEMA DE IDIOMAS
-========================================================= */
-
-let currentLanguage = "es";
-
-
-const languageSelect =
-    document.getElementById(
-        "language-select"
-    );
-
-
-function changeLanguage(language) {
-
-    currentLanguage = language;
-
-
-    const text =
-        translations[language];
-
-
-    if (!text) {
-        return;
-    }
-
-
-    /* TÍTULO */
-
-    document.title =
-        text.pageTitle;
-
-
-    document.documentElement.lang =
-        language;
-
-
-    /* HEADER */
-
-    document.getElementById(
-        "subtitle"
-    ).textContent =
-        text.subtitle;
-
-
-    /* TABLA PERIÓDICA */
-
-    document.getElementById(
-        "periodic-title"
-    ).textContent =
-        text.periodicTable;
-
-
-    document.getElementById(
-        "periodic-description"
-    ).textContent =
-        text.periodicDescription;
-
-
-    /* LABORATORIO */
-
-    document.getElementById(
-        "laboratory-title"
-    ).textContent =
-        text.laboratory;
-
-
-    document.getElementById(
-        "laboratory-description"
-    ).textContent =
-        text.laboratoryDescription;
-
-
-    /* BOTÓN */
-
-    document.getElementById(
-        "combine-button"
-    ).textContent =
-        text.combine;
-
-
-    /* RESULTADO VACÍO */
-
-    document.getElementById(
-        "empty-title"
-    ).textContent =
-        text.emptyLaboratory;
-
-
-    document.getElementById(
-        "empty-description"
-    ).textContent =
-        text.emptyLaboratoryDescription;
-
-
-    /* FOOTER */
-
-    document.getElementById(
-        "footer-text"
-    ).textContent =
-        text.footer;
-
-
-    document.getElementById(
-        "footer-small"
-    ).textContent =
-        text.footerSmall;
-
-
-    /* GUARDAR IDIOMA */
-
-    localStorage.setItem(
-        "chemix-language",
-        language
-    );
-
-}
-
-
-/* =========================================================
-   CAMBIAR IDIOMA
-========================================================= */
-
-languageSelect.addEventListener(
-    "change",
-    () => {
-
-        changeLanguage(
-            languageSelect.value
-        );
-
-    }
-);
-
-
-/* =========================================================
-   RECUPERAR IDIOMA
-========================================================= */
-
-const savedLanguage =
-    localStorage.getItem(
-        "chemix-language"
-    );
-
-
-if (
-    savedLanguage &&
-    translations[savedLanguage]
-) {
-
-    languageSelect.value =
-        savedLanguage;
-
-    changeLanguage(
-        savedLanguage
-    );
-
-} else {
-
-    changeLanguage("es");
-
-}
