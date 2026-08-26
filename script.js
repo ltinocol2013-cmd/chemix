@@ -152,6 +152,15 @@ const seleccionados = [
 ];
 
 
+/*
+   Cuando las dos cajas están ocupadas,
+   esta variable indica cuál será
+   reemplazada por el siguiente clic.
+*/
+
+let siguientePosicion = 0;
+
+
 /* =========================================================
    ELEMENTOS HTML
 ========================================================= */
@@ -275,8 +284,7 @@ function crearTabla() {
 function colocarElemento(elemento) {
 
     /*
-       PRIMERO:
-       buscar un espacio vacío.
+       Primero buscamos un espacio vacío.
     */
 
     let posicion =
@@ -284,19 +292,35 @@ function colocarElemento(elemento) {
 
 
     /*
-       SI LOS DOS ESPACIOS ESTÁN OCUPADOS:
-       reemplazar el segundo.
+       Si existe un espacio vacío,
+       usamos ese espacio.
     */
 
-    if (posicion === -1) {
+    if (posicion !== -1) {
 
-        posicion = 1;
+        seleccionados[posicion] =
+            elemento;
 
     }
 
+    /*
+       Si ambos están ocupados,
+       reemplazamos alternativamente
+       el primero y el segundo.
+    */
 
-    seleccionados[posicion] =
-        elemento;
+    else {
+
+        seleccionados[siguientePosicion] =
+            elemento;
+
+
+        siguientePosicion =
+            siguientePosicion === 0
+                ? 1
+                : 0;
+
+    }
 
 
     actualizarSlots();
@@ -363,11 +387,6 @@ function actualizarSlots() {
 slots.forEach(
     (slot, index) => {
 
-
-        /* =================================================
-           DRAGOVER
-        ================================================= */
-
         slot.addEventListener(
             "dragover",
             evento => {
@@ -382,10 +401,6 @@ slots.forEach(
         );
 
 
-        /* =================================================
-           DRAGLEAVE
-        ================================================= */
-
         slot.addEventListener(
             "dragleave",
             () => {
@@ -397,10 +412,6 @@ slots.forEach(
             }
         );
 
-
-        /* =================================================
-           DROP
-        ================================================= */
 
         slot.addEventListener(
             "drop",
@@ -436,12 +447,24 @@ slots.forEach(
 
 
                 /*
-                   AQUÍ SE PERMITE REEMPLAZAR
-                   EL ELEMENTO ACTUAL.
+                   El drop siempre puede
+                   reemplazar directamente
+                   el elemento de esa caja.
                 */
 
                 seleccionados[index] =
                     elemento;
+
+
+                /*
+                   El siguiente clic manual
+                   comenzará en la otra caja.
+                */
+
+                siguientePosicion =
+                    index === 0
+                        ? 1
+                        : 0;
 
 
                 actualizarSlots();
@@ -451,8 +474,7 @@ slots.forEach(
 
 
         /* =================================================
-           DOBLE CLIC / DOBLE TOQUE
-           = ELIMINAR ELEMENTO
+           DOBLE CLIC = ELIMINAR
         ================================================= */
 
         slot.addEventListener(
@@ -461,6 +483,11 @@ slots.forEach(
 
                 seleccionados[index] =
                     null;
+
+
+                siguientePosicion =
+                    index;
+
 
                 actualizarSlots();
 
