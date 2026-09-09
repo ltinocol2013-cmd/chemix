@@ -1,22 +1,14 @@
 /* =========================================================
    CHEMIX
-   BASE DE DATOS DE COMBINACIONES
+   COMBINACIONES CORREGIDAS
+   CLAVES NORMALIZADAS PARA EL SISTEMA DE CHEMIX
 ========================================================= */
 
 const combinations = {
 
     /* HIDRÓGENO */
 
-    "H-O": [
-        {
-            formula: "H₂O",
-            name: "Agua",
-            type: "Óxido",
-            description: "Compuesto formado por hidrógeno y oxígeno."
-        }
-    ],
-
-    "H-Cl": [
+    "Cl-H": [
         {
             formula: "HCl",
             name: "Cloruro de hidrógeno",
@@ -25,21 +17,21 @@ const combinations = {
         }
     ],
 
-    "H-F": [
-        {
-            formula: "HF",
-            name: "Fluoruro de hidrógeno",
-            type: "Haluros",
-            description: "Compuesto formado por hidrógeno y flúor."
-        }
-    ],
-
-    "H-Br": [
+    "Br-H": [
         {
             formula: "HBr",
             name: "Bromuro de hidrógeno",
             type: "Haluros",
             description: "Compuesto formado por hidrógeno y bromo."
+        }
+    ],
+
+    "F-H": [
+        {
+            formula: "HF",
+            name: "Fluoruro de hidrógeno",
+            type: "Haluros",
+            description: "Compuesto formado por hidrógeno y flúor."
         }
     ],
 
@@ -49,6 +41,15 @@ const combinations = {
             name: "Yoduro de hidrógeno",
             type: "Haluros",
             description: "Compuesto formado por hidrógeno y yodo."
+        }
+    ],
+
+    "H-O": [
+        {
+            formula: "H₂O",
+            name: "Agua",
+            type: "Óxido",
+            description: "Compuesto formado por hidrógeno y oxígeno."
         }
     ],
 
@@ -70,7 +71,7 @@ const combinations = {
         }
     ],
 
-    "N-H": [
+    "H-N": [
         {
             formula: "NH₃",
             name: "Amoníaco",
@@ -82,6 +83,24 @@ const combinations = {
 
     /* ALCALINOS */
 
+    "Cl-Li": [
+        {
+            formula: "LiCl",
+            name: "Cloruro de litio",
+            type: "Sal",
+            description: "Sal formada por litio y cloro."
+        }
+    ],
+
+    "H-Li": [
+        {
+            formula: "LiH",
+            name: "Hidruro de litio",
+            type: "Hidruro",
+            description: "Hidruro formado por litio e hidrógeno."
+        }
+    ],
+
     "Li-O": [
         {
             formula: "Li₂O",
@@ -91,21 +110,21 @@ const combinations = {
         }
     ],
 
-    "Li-Cl": [
+    "Cl-Na": [
         {
-            formula: "LiCl",
-            name: "Cloruro de litio",
+            formula: "NaCl",
+            name: "Cloruro de sodio",
             type: "Sal",
-            description: "Sal formada por litio y cloro."
+            description: "La sal común."
         }
     ],
 
-    "Li-H": [
+    "H-Na": [
         {
-            formula: "LiH",
-            name: "Hidruro de litio",
+            formula: "NaH",
+            name: "Hidruro de sodio",
             type: "Hidruro",
-            description: "Hidruro formado por litio e hidrógeno."
+            description: "Hidruro formado por sodio e hidrógeno."
         }
     ],
 
@@ -118,21 +137,21 @@ const combinations = {
         }
     ],
 
-    "Na-Cl": [
+    "Cl-K": [
         {
-            formula: "NaCl",
-            name: "Cloruro de sodio",
+            formula: "KCl",
+            name: "Cloruro de potasio",
             type: "Sal",
-            description: "La sal común."
+            description: "Sal formada por potasio y cloro."
         }
     ],
 
-    "Na-H": [
+    "H-K": [
         {
-            formula: "NaH",
-            name: "Hidruro de sodio",
+            formula: "KH",
+            name: "Hidruro de potasio",
             type: "Hidruro",
-            description: "Hidruro formado por sodio e hidrógeno."
+            description: "Hidruro formado por potasio e hidrógeno."
         }
     ],
 
@@ -145,26 +164,17 @@ const combinations = {
         }
     ],
 
-    "K-Cl": [
-        {
-            formula: "KCl",
-            name: "Cloruro de potasio",
-            type: "Sal",
-            description: "Sal formada por potasio y cloro."
-        }
-    ],
-
-    "K-H": [
-        {
-            formula: "KH",
-            name: "Hidruro de potasio",
-            type: "Hidruro",
-            description: "Hidruro formado por potasio e hidrógeno."
-        }
-    ],
-
 
     /* ALCALINOTÉRREOS */
+
+    "Cl-Be": [
+        {
+            formula: "BeCl₂",
+            name: "Cloruro de berilio",
+            type: "Sal",
+            description: "Compuesto formado por berilio y cloro."
+        }
+    ],
 
     "Be-O": [
         {
@@ -175,52 +185,7 @@ const combinations = {
         }
     ],
 
-    "Be-Cl": [
-        {
-            formula: "BeCl₂",
-            name: "Cloruro de berilio",
-            type: "Sal",
-            description: "Compuesto formado por berilio y cloro."
-        }
-    ],
-
-    "Mg-O": [
-        {
-            formula: "MgO",
-            name: "Óxido de magnesio",
-            type: "Óxido",
-            description: "Óxido formado por magnesio y oxígeno."
-        }
-    ],
-
-    "Mg-Cl": [
-        {
-            formula: "MgCl₂",
-            name: "Cloruro de magnesio",
-            type: "Sal",
-            description: "Sal formada por magnesio y cloro."
-        }
-    ],
-
-    "Mg-H": [
-        {
-            formula: "MgH₂",
-            name: "Hidruro de magnesio",
-            type: "Hidruro",
-            description: "Hidruro formado por magnesio e hidrógeno."
-        }
-    ],
-
-    "Ca-O": [
-        {
-            formula: "CaO",
-            name: "Óxido de calcio",
-            type: "Óxido",
-            description: "También conocido como cal viva."
-        }
-    ],
-
-    "Ca-Cl": [
+    "Cl-Ca": [
         {
             formula: "CaCl₂",
             name: "Cloruro de calcio",
@@ -238,12 +203,39 @@ const combinations = {
         }
     ],
 
-    "Ba-O": [
+    "Ca-O": [
         {
-            formula: "BaO",
-            name: "Óxido de bario",
+            formula: "CaO",
+            name: "Óxido de calcio",
             type: "Óxido",
-            description: "Óxido formado por bario y oxígeno."
+            description: "También conocido como cal viva."
+        }
+    ],
+
+    "Cl-Mg": [
+        {
+            formula: "MgCl₂",
+            name: "Cloruro de magnesio",
+            type: "Sal",
+            description: "Sal formada por magnesio y cloro."
+        }
+    ],
+
+    "H-Mg": [
+        {
+            formula: "MgH₂",
+            name: "Hidruro de magnesio",
+            type: "Hidruro",
+            description: "Hidruro formado por magnesio e hidrógeno."
+        }
+    ],
+
+    "Mg-O": [
+        {
+            formula: "MgO",
+            name: "Óxido de magnesio",
+            type: "Óxido",
+            description: "Óxido formado por magnesio y oxígeno."
         }
     ],
 
@@ -256,6 +248,24 @@ const combinations = {
         }
     ],
 
+    "Ba-O": [
+        {
+            formula: "BaO",
+            name: "Óxido de bario",
+            type: "Óxido",
+            description: "Óxido formado por bario y oxígeno."
+        }
+    ],
+
+    "Cl-Sr": [
+        {
+            formula: "SrCl₂",
+            name: "Cloruro de estroncio",
+            type: "Sal",
+            description: "Sal formada por estroncio y cloro."
+        }
+    ],
+
     "Sr-O": [
         {
             formula: "SrO",
@@ -265,44 +275,17 @@ const combinations = {
         }
     ],
 
-    "Sr-Cl": [
-        {
-            formula: "SrCl₂",
-            name: "Cloruro de estroncio",
-            type: "Sal",
-            description: "Sal formada por estroncio y cloro."
-        }
-    ],
-
-
-    /* CARBONO */
-
-    "C-O": [
-        {
-            formula: "CO",
-            name: "Monóxido de carbono",
-            type: "Óxido",
-            description: "Óxido de carbono."
-        },
-        {
-            formula: "CO₂",
-            name: "Dióxido de carbono",
-            type: "Óxido",
-            description: "Óxido de carbono."
-        }
-    ],
-
-    "C-S": [
-        {
-            formula: "CS₂",
-            name: "Disulfuro de carbono",
-            type: "Sulfuro",
-            description: "Compuesto formado por carbono y azufre."
-        }
-    ],
-
 
     /* NITRÓGENO */
+
+    "Cl-N": [
+        {
+            formula: "NCl₃",
+            name: "Tricloruro de nitrógeno",
+            type: "Haluros",
+            description: "Compuesto formado por nitrógeno y cloro."
+        }
+    ],
 
     "N-O": [
         {
@@ -319,19 +302,19 @@ const combinations = {
         }
     ],
 
-    "N-Cl": [
-        {
-            formula: "NCl₃",
-            name: "Tricloruro de nitrógeno",
-            type: "Haluros",
-            description: "Compuesto formado por nitrógeno y cloro."
-        }
-    ],
-
 
     /* AZUFRE */
 
-    "S-O": [
+    "Cl-S": [
+        {
+            formula: "S₂Cl₂",
+            name: "Dicloruro de disulfuro",
+            type: "Haluros",
+            description: "Compuesto formado por azufre y cloro."
+        }
+    ],
+
+    "O-S": [
         {
             formula: "SO₂",
             name: "Dióxido de azufre",
@@ -346,34 +329,10 @@ const combinations = {
         }
     ],
 
-    "S-Cl": [
-        {
-            formula: "S₂Cl₂",
-            name: "Dicloruro de disulfuro",
-            type: "Haluros",
-            description: "Compuesto formado por azufre y cloro."
-        }
-    ],
-
 
     /* FÓSFORO */
 
-    "P-O": [
-        {
-            formula: "P₄O₆",
-            name: "Hexóxido de tetrafósforo",
-            type: "Óxido",
-            description: "Óxido molecular del fósforo."
-        },
-        {
-            formula: "P₄O₁₀",
-            name: "Decaóxido de tetrafósforo",
-            type: "Óxido",
-            description: "Óxido molecular del fósforo."
-        }
-    ],
-
-    "P-Cl": [
+    "Cl-P": [
         {
             formula: "PCl₃",
             name: "Tricloruro de fósforo",
@@ -388,28 +347,25 @@ const combinations = {
         }
     ],
 
+    "O-P": [
+        {
+            formula: "P₄O₆",
+            name: "Hexóxido de tetrafósforo",
+            type: "Óxido",
+            description: "Óxido molecular del fósforo."
+        },
+        {
+            formula: "P₄O₁₀",
+            name: "Decaóxido de tetrafósforo",
+            type: "Óxido",
+            description: "Óxido molecular del fósforo."
+        }
+    ],
+
 
     /* SILICIO */
 
-    "Si-O": [
-        {
-            formula: "SiO₂",
-            name: "Dióxido de silicio",
-            type: "Óxido",
-            description: "Componente principal del cuarzo."
-        }
-    ],
-
-    "Si-H": [
-        {
-            formula: "SiH₄",
-            name: "Silano",
-            type: "Hidruro",
-            description: "Hidruro de silicio."
-        }
-    ],
-
-    "Si-Cl": [
+    "Cl-Si": [
         {
             formula: "SiCl₄",
             name: "Tetracloruro de silicio",
@@ -418,17 +374,26 @@ const combinations = {
         }
     ],
 
-
-    /* BORO */
-
-    "B-O": [
+    "H-Si": [
         {
-            formula: "B₂O₃",
-            name: "Óxido de boro",
-            type: "Óxido",
-            description: "Óxido formado por boro y oxígeno."
+            formula: "SiH₄",
+            name: "Silano",
+            type: "Hidruro",
+            description: "Hidruro de silicio."
         }
     ],
+
+    "O-Si": [
+        {
+            formula: "SiO₂",
+            name: "Dióxido de silicio",
+            type: "Óxido",
+            description: "Componente principal del cuarzo."
+        }
+    ],
+
+
+    /* BORO */
 
     "B-Cl": [
         {
@@ -439,17 +404,17 @@ const combinations = {
         }
     ],
 
-
-    /* ALUMINIO */
-
-    "Al-O": [
+    "B-O": [
         {
-            formula: "Al₂O₃",
-            name: "Óxido de aluminio",
+            formula: "B₂O₃",
+            name: "Óxido de boro",
             type: "Óxido",
-            description: "Óxido común del aluminio."
+            description: "Óxido formado por boro y oxígeno."
         }
     ],
+
+
+    /* ALUMINIO */
 
     "Al-Cl": [
         {
@@ -460,8 +425,32 @@ const combinations = {
         }
     ],
 
+    "Al-O": [
+        {
+            formula: "Al₂O₃",
+            name: "Óxido de aluminio",
+            type: "Óxido",
+            description: "Óxido común del aluminio."
+        }
+    ],
+
 
     /* HIERRO */
+
+    "Cl-Fe": [
+        {
+            formula: "FeCl₂",
+            name: "Cloruro de hierro(II)",
+            type: "Sal",
+            description: "Cloruro de hierro con estado de oxidación +2."
+        },
+        {
+            formula: "FeCl₃",
+            name: "Cloruro de hierro(III)",
+            type: "Sal",
+            description: "Cloruro de hierro con estado de oxidación +3."
+        }
+    ],
 
     "Fe-O": [
         {
@@ -484,72 +473,57 @@ const combinations = {
         }
     ],
 
-    "Fe-Cl": [
-        {
-            formula: "FeCl₂",
-            name: "Cloruro de hierro(II)",
-            type: "Sal",
-            description: "Cloruro de hierro con estado +2."
-        },
-        {
-            formula: "FeCl₃",
-            name: "Cloruro de hierro(III)",
-            type: "Sal",
-            description: "Cloruro de hierro con estado +3."
-        }
-    ],
-
 
     /* COBRE */
+
+    "Cl-Cu": [
+        {
+            formula: "CuCl",
+            name: "Cloruro de cobre(I)",
+            type: "Sal",
+            description: "Cloruro de cobre con estado de oxidación +1."
+        },
+        {
+            formula: "CuCl₂",
+            name: "Cloruro de cobre(II)",
+            type: "Sal",
+            description: "Cloruro de cobre con estado de oxidación +2."
+        }
+    ],
 
     "Cu-O": [
         {
             formula: "Cu₂O",
             name: "Óxido de cobre(I)",
             type: "Óxido",
-            description: "Óxido de cobre con estado +1."
+            description: "Óxido de cobre con estado de oxidación +1."
         },
         {
             formula: "CuO",
             name: "Óxido de cobre(II)",
             type: "Óxido",
-            description: "Óxido de cobre con estado +2."
-        }
-    ],
-
-    "Cu-Cl": [
-        {
-            formula: "CuCl",
-            name: "Cloruro de cobre(I)",
-            type: "Sal",
-            description: "Cloruro de cobre con estado +1."
-        },
-        {
-            formula: "CuCl₂",
-            name: "Cloruro de cobre(II)",
-            type: "Sal",
-            description: "Cloruro de cobre con estado +2."
+            description: "Óxido de cobre con estado de oxidación +2."
         }
     ],
 
 
     /* ZINC */
 
-    "Zn-O": [
-        {
-            formula: "ZnO",
-            name: "Óxido de zinc",
-            type: "Óxido",
-            description: "Óxido formado por zinc y oxígeno."
-        }
-    ],
-
-    "Zn-Cl": [
+    "Cl-Zn": [
         {
             formula: "ZnCl₂",
             name: "Cloruro de zinc",
             type: "Sal",
             description: "Sal formada por zinc y cloro."
+        }
+    ],
+
+    "O-Zn": [
+        {
+            formula: "ZnO",
+            name: "Óxido de zinc",
+            type: "Óxido",
+            description: "Óxido formado por zinc y oxígeno."
         }
     ],
 
@@ -577,7 +551,7 @@ const combinations = {
 
     /* MERCURIO */
 
-    "Hg-Cl": [
+    "Cl-Hg": [
         {
             formula: "HgCl₂",
             name: "Cloruro de mercurio(II)",
@@ -601,7 +575,7 @@ const combinations = {
 
     /* ESTAÑO */
 
-    "Sn-O": [
+    "O-Sn": [
         {
             formula: "SnO",
             name: "Óxido de estaño(II)",
@@ -619,7 +593,16 @@ const combinations = {
 
     /* PLOMO */
 
-    "Pb-O": [
+    "Cl-Pb": [
+        {
+            formula: "PbCl₂",
+            name: "Cloruro de plomo(II)",
+            type: "Sal",
+            description: "Sal formada por plomo y cloro."
+        }
+    ],
+
+    "O-Pb": [
         {
             formula: "PbO",
             name: "Óxido de plomo(II)",
@@ -631,15 +614,6 @@ const combinations = {
             name: "Óxido de plomo(IV)",
             type: "Óxido",
             description: "Óxido de plomo."
-        }
-    ],
-
-    "Pb-Cl": [
-        {
-            formula: "PbCl₂",
-            name: "Cloruro de plomo(II)",
-            type: "Sal",
-            description: "Sal formada por plomo y cloro."
         }
     ],
 
@@ -661,7 +635,7 @@ const combinations = {
     "Cl-O": [
         {
             formula: "Cl₂O",
-            name: "Monóxido de dicloro",
+            name: "Monóxido de cloro",
             type: "Óxido",
             description: "Óxido de cloro."
         }
