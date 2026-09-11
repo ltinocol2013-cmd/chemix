@@ -1,4 +1,3 @@
-```js
 /* =========================================================
    CHEMIX
    LÓGICA PRINCIPAL
@@ -157,7 +156,7 @@ let siguientePosicion = 0;
 
 /*
    Nomenclatura actualmente seleccionada.
-   
+
    stock   = Stock
    iupac   = IUPAC
    clasica = Clásica
@@ -422,12 +421,13 @@ slots.forEach(
                     );
 
 
-                const elemento =
-                    elementos.find(
-                        item =>
-                            item.numero ===
-                            numero
-                    );
+                /* =================================================
+                   CORRECCIÓN DEL ERROR
+                ================================================= */
+
+                const elemento = elementos.find(function(item) {
+                    return item.numero === numero;
+                });
 
 
                 if (!elemento) {
@@ -1007,4 +1007,3 @@ console.log(
 crearTabla();
 
 actualizarSlots();
-```
