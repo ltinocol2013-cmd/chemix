@@ -1,220 +1,254 @@
 <!DOCTYPE html>
+
 <html lang="es">
 
 <head>
     <meta charset="UTF-8">
 
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+```
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title id="page-title">
-        Chemix — Laboratorio de Química
-    </title>
+<title id="page-title">
+    Chemix — Laboratorio de Química
+</title>
 
-    <link rel="icon" href="./favicon.png" type="image/png">
+<link rel="icon" href="./favicon.png" type="image/png">
 
-    <link rel="stylesheet" href="./style.css">
+<link rel="stylesheet" href="./style.css">
+```
+
 </head>
 
 <body>
 
-    <header class="header">
+```
+<header class="header">
 
-        <div class="language-selector">
-            <span>🌐</span>
+    <div class="language-selector">
+        <span>🌐</span>
 
-            <select id="language-select">
-                <option value="es">ES</option>
-                <option value="en">EN</option>
+        <select id="language-select">
+            <option value="es">ES</option>
+            <option value="en">EN</option>
+        </select>
+    </div>
+
+    <div class="logo">
+        <span class="logo-icon">⚗</span>
+        <span>Chemix</span>
+    </div>
+
+    <p class="subtitle" id="subtitle">
+        Explora los elementos y descubre qué ocurre al combinarlos
+    </p>
+
+</header>
+
+
+<main>
+
+    <section class="periodic-section">
+
+        <div class="section-title">
+
+            <h1 id="periodic-title">
+                Tabla periódica
+            </h1>
+
+            <p id="periodic-description">
+                Arrastra un elemento al laboratorio o haz clic sobre él.
+            </p>
+
+        </div>
+
+        <div
+            id="periodic-table"
+            class="periodic-table"
+        ></div>
+
+        <div class="legend">
+
+            <div>
+                <span class="legend-color alcalino"></span>
+                Alcalinos
+            </div>
+
+            <div>
+                <span class="legend-color alcalinoterreo"></span>
+                Alcalinotérreos
+            </div>
+
+            <div>
+                <span class="legend-color transicion"></span>
+                Transición
+            </div>
+
+            <div>
+                <span class="legend-color post-transicion"></span>
+                Post-transición
+            </div>
+
+            <div>
+                <span class="legend-color metaloide"></span>
+                Metaloides
+            </div>
+
+            <div>
+                <span class="legend-color no-metal"></span>
+                No metales
+            </div>
+
+            <div>
+                <span class="legend-color halogeno"></span>
+                Halógenos
+            </div>
+
+            <div>
+                <span class="legend-color gas-noble"></span>
+                Gases nobles
+            </div>
+
+            <div>
+                <span class="legend-color lantanido"></span>
+                Lantánidos
+            </div>
+
+            <div>
+                <span class="legend-color actinido"></span>
+                Actínidos
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <section class="laboratory">
+
+        <div class="section-title">
+
+            <h2 id="laboratory-title">
+                Laboratorio
+            </h2>
+
+            <p id="laboratory-description">
+                Coloca dos elementos para intentar combinarlos.
+            </p>
+
+        </div>
+
+
+        <!-- SELECTOR DE NOMENCLATURA -->
+
+        <div class="nomenclature-selector">
+
+            <label for="nomenclature-select">
+                Nomenclatura:
+            </label>
+
+            <select id="nomenclature-select">
+
+                <option value="iupac">
+                    IUPAC
+                </option>
+
+                <option value="stock">
+                    Stock
+                </option>
+
+                <option value="clasica">
+                    Clásica
+                </option>
+
             </select>
+
         </div>
 
-        <div class="logo">
-            <span class="logo-icon">⚗</span>
-            <span>Chemix</span>
-        </div>
 
-        <p class="subtitle" id="subtitle">
-            Explora los elementos y descubre qué ocurre al combinarlos
-        </p>
+        <div class="reaction-area">
 
-    </header>
+            <div
+                class="element-slot"
+                data-slot="0"
+            >
+                +
+            </div>
 
-
-    <main>
-
-        <section class="periodic-section">
-
-            <div class="section-title">
-
-                <h1 id="periodic-title">
-                    Tabla periódica
-                </h1>
-
-                <p id="periodic-description">
-                    Arrastra un elemento al laboratorio o haz clic sobre él.
-                </p>
-
+            <div class="plus-symbol">
+                +
             </div>
 
             <div
-                id="periodic-table"
-                class="periodic-table"
-            ></div>
-
-            <div class="legend">
-
-                <div>
-                    <span class="legend-color alcalino"></span>
-                    Alcalinos
-                </div>
-
-                <div>
-                    <span class="legend-color alcalinoterreo"></span>
-                    Alcalinotérreos
-                </div>
-
-                <div>
-                    <span class="legend-color transicion"></span>
-                    Transición
-                </div>
-
-                <div>
-                    <span class="legend-color post-transicion"></span>
-                    Post-transición
-                </div>
-
-                <div>
-                    <span class="legend-color metaloide"></span>
-                    Metaloides
-                </div>
-
-                <div>
-                    <span class="legend-color no-metal"></span>
-                    No metales
-                </div>
-
-                <div>
-                    <span class="legend-color halogeno"></span>
-                    Halógenos
-                </div>
-
-                <div>
-                    <span class="legend-color gas-noble"></span>
-                    Gases nobles
-                </div>
-
-                <div>
-                    <span class="legend-color lantanido"></span>
-                    Lantánidos
-                </div>
-
-                <div>
-                    <span class="legend-color actinido"></span>
-                    Actínidos
-                </div>
-
+                class="element-slot"
+                data-slot="1"
+            >
+                +
             </div>
 
-        </section>
+            <div class="arrow">
+                →
+            </div>
+
+            <button
+                id="combine-button"
+                class="combine-button"
+                type="button"
+            >
+                Combinar
+            </button>
+
+        </div>
 
 
-        <section class="laboratory">
+        <div id="result" class="result">
 
-            <div class="section-title">
+            <div class="empty-result">
 
-                <h2 id="laboratory-title">
-                    Laboratorio
-                </h2>
+                <div class="empty-icon">
+                    ⚗️
+                </div>
 
-                <p id="laboratory-description">
-                    Coloca dos elementos para intentar combinarlos.
+                <h3 id="empty-title">
+                    Laboratorio vacío
+                </h3>
+
+                <p id="empty-description">
+                    Selecciona dos elementos para comenzar.
                 </p>
 
             </div>
 
-            <div class="reaction-area">
+        </div>
 
-                <div
-                    class="element-slot"
-                    data-slot="0"
-                >
-                    +
-                </div>
+    </section>
 
-                <div class="plus-symbol">
-                    +
-                </div>
-
-                <div
-                    class="element-slot"
-                    data-slot="1"
-                >
-                    +
-                </div>
-
-                <div class="arrow">
-                    →
-                </div>
-
-                <button
-                    id="combine-button"
-                    class="combine-button"
-                    type="button"
-                >
-                    Combinar
-                </button>
-
-            </div>
+</main>
 
 
-            <div id="result" class="result">
+<footer>
 
-                <div class="empty-result">
+    <p id="footer-text">
+        Chemix — Laboratorio educativo de química
+    </p>
 
-                    <div class="empty-icon">
-                        ⚗️
-                    </div>
+    <p
+        class="footer-small"
+        id="footer-small"
+    >
+        Proyecto educativo creado con HTML, CSS y JavaScript
+    </p>
 
-                    <h3 id="empty-title">
-                        Laboratorio vacío
-                    </h3>
-
-                    <p id="empty-description">
-                        Selecciona dos elementos para comenzar.
-                    </p>
-
-                </div>
-
-            </div>
-
-        </section>
-
-    </main>
+</footer>
 
 
-    <footer>
+<!-- IMPORTANTE: combinations.js debe cargarse antes de script.js -->
 
-        <p id="footer-text">
-            Chemix — Laboratorio educativo de química
-        </p>
+<script src="./combinations.js?v=2"></script>
 
-        <p
-            class="footer-small"
-            id="footer-small"
-        >
-            Proyecto educativo creado con HTML, CSS y JavaScript
-        </p>
+<script src="./script.js?v=2"></script>
 
-    </footer>
-
-
-    <!-- IMPORTANTE: combinations.js debe cargarse antes de script.js -->
-
-    <script src="./combinations.js?v=2"></script>
-
-    <script src="./script.js?v=2"></script>
-
-    <script src="./languages.js?v=2"></script>
+<script src="./languages.js?v=2"></script>
+```
 
 </body>
 
