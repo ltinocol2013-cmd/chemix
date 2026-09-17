@@ -787,7 +787,7 @@ margin-bottom: 8px;
 
 }
 
-.empty-result h3 {
+.empty-result {
 margin-bottom: 5px;
 }
 
@@ -818,7 +818,7 @@ margin-bottom: 15px;
 
 }
 
-.combination-result h3 {
+.combination-result {
 margin-bottom: 20px;
 
 ```
