@@ -153,15 +153,6 @@ const seleccionados = [
 
 let siguientePosicion = 0;
 
-
-/*
-   Nomenclatura actualmente seleccionada.
-
-   stock   = Stock
-   iupac   = IUPAC
-   clasica = Clásica
-*/
-
 let nomenclaturaActual = "stock";
 
 
@@ -188,6 +179,35 @@ const resultado =
     document.getElementById(
         "result"
     );
+
+const selectorNomenclatura =
+    document.getElementById(
+        "nomenclature-select"
+    );
+
+
+/* =========================================================
+   SELECTOR DE NOMENCLATURA
+========================================================= */
+
+if (selectorNomenclatura) {
+
+    selectorNomenclatura.value =
+        nomenclaturaActual;
+
+    selectorNomenclatura.addEventListener(
+        "change",
+        evento => {
+
+            nomenclaturaActual =
+                evento.target.value;
+
+            actualizarNombresProductos();
+
+        }
+    );
+
+}
 
 
 /* =========================================================
@@ -310,7 +330,6 @@ function colocarElemento(elemento) {
 
     }
 
-
     actualizarSlots();
 
 }
@@ -328,7 +347,6 @@ function actualizarSlots() {
             const elemento =
                 seleccionados[index];
 
-
             if (!elemento) {
 
                 slot.className =
@@ -341,10 +359,8 @@ function actualizarSlots() {
 
             }
 
-
             slot.className =
                 `element-slot filled ${elemento.categoria}`;
-
 
             slot.innerHTML = `
 
@@ -411,7 +427,6 @@ slots.forEach(
                     "drag-over"
                 );
 
-
                 const numero =
                     Number(
                         evento.dataTransfer
@@ -421,13 +436,12 @@ slots.forEach(
                     );
 
 
-                /* =================================================
-                   CORRECCIÓN DEL ERROR
-                ================================================= */
-
-                const elemento = elementos.find(function(item) {
-                    return item.numero === numero;
-                });
+                const elemento =
+                    elementos.find(
+                        function(item) {
+                            return item.numero === numero;
+                        }
+                    );
 
 
                 if (!elemento) {
@@ -438,12 +452,10 @@ slots.forEach(
                 seleccionados[index] =
                     elemento;
 
-
                 siguientePosicion =
                     index === 0
                         ? 1
                         : 0;
-
 
                 actualizarSlots();
 
@@ -490,19 +502,10 @@ function obtenerClave(
         `${elemento2.simbolo}-${elemento1.simbolo}`;
 
 
-    /*
-       Primero intentamos encontrar
-       la combinación en el orden original.
-    */
-
     if (combinations[clave1]) {
         return clave1;
     }
 
-
-    /*
-       Si no existe, probamos el orden inverso.
-    */
 
     if (combinations[clave2]) {
         return clave2;
@@ -520,12 +523,6 @@ function obtenerClave(
 
 function obtenerNombreProducto(producto) {
 
-    /*
-       Si combinations.js ya tiene
-       las tres nomenclaturas, usamos
-       la seleccionada.
-    */
-
     if (
         producto.names &&
         producto.names[nomenclaturaActual]
@@ -537,11 +534,6 @@ function obtenerNombreProducto(producto) {
 
     }
 
-
-    /*
-       Compatibilidad con la estructura
-       antigua que solamente tenía "name".
-    */
 
     if (producto.name) {
 
@@ -568,7 +560,7 @@ function actualizarNombresProductos() {
 
 
     productos.forEach(
-        (productoHTML, index) => {
+        productoHTML => {
 
             const clave =
                 productoHTML.dataset.productIndex;
@@ -579,13 +571,18 @@ function actualizarNombresProductos() {
             }
 
 
-            const elemento =
+            if (!window.productosActuales) {
+                return;
+            }
+
+
+            const producto =
                 window.productosActuales[
                     Number(clave)
                 ];
 
 
-            if (!elemento) {
+            if (!producto) {
                 return;
             }
 
@@ -600,68 +597,13 @@ function actualizarNombresProductos() {
 
                 nombre.textContent =
                     obtenerNombreProducto(
-                        elemento
+                        producto
                     );
 
             }
 
         }
     );
-
-}
-
-
-/* =========================================================
-   SELECTOR DE NOMENCLATURA
-========================================================= */
-
-function crearSelectorNomenclatura() {
-
-    const selector =
-        document.createElement(
-            "select"
-        );
-
-    selector.id =
-        "nomenclature-select";
-
-
-    selector.innerHTML = `
-
-        <option value="stock">
-            Stock
-        </option>
-
-        <option value="iupac">
-            IUPAC
-        </option>
-
-        <option value="clasica">
-            Clásica
-        </option>
-
-    `;
-
-
-    selector.value =
-        nomenclaturaActual;
-
-
-    selector.addEventListener(
-        "change",
-        evento => {
-
-            nomenclaturaActual =
-                evento.target.value;
-
-
-            actualizarNombresProductos();
-
-        }
-    );
-
-
-    return selector;
 
 }
 
@@ -787,186 +729,95 @@ function combinar() {
 
 
     /* =================================================
-       CONTENEDOR GENERAL
+       RESULTADO
     ================================================= */
 
     resultado.innerHTML = `
 
-        <div
-            class="chemix-result-layout"
-            style="
-                display:flex;
-                align-items:flex-start;
-                gap:24px;
-                width:100%;
-            "
-        >
+        <div class="combination-result">
 
-            <!-- =========================================
-                 RESULTADO
-            ========================================== -->
+            <div class="reaction">
 
-            <div
-                class="combination-result"
-                style="
-                    flex:1;
-                    min-width:0;
-                "
-            >
-
-                <div class="reaction">
-
-                    ${elemento1.simbolo}
-                    +
-                    ${elemento2.simbolo}
-                    →
-                    ${productos
-                        .map(
-                            producto =>
-                                producto.formula
-                        )
-                        .join(" / ")
-                    }
-
-                </div>
-
-
-                <h3>
-
-                    ${productos.length}
-
-                    resultado${
-
-                        productos.length === 1
-                            ? ""
-                            : "s"
-
-                    }
-
-                </h3>
-
-
-                <div class="products-list">
-
-                    ${productos
-                        .map(
-                            (producto, index) => `
-
-                                <div
-                                    class="product"
-                                    data-product-index="${index}"
-                                >
-
-                                    <div
-                                        class="product-formula"
-                                    >
-                                        ${producto.formula}
-                                    </div>
-
-
-                                    <div
-                                        class="product-name"
-                                    >
-                                        ${obtenerNombreProducto(
-                                            producto
-                                        )}
-                                    </div>
-
-
-                                    <div
-                                        class="product-type"
-                                    >
-                                        ${producto.type}
-                                    </div>
-
-
-                                    <p>
-                                        ${producto.description}
-                                    </p>
-
-                                </div>
-
-                            `
-                        )
-                        .join("")
-                    }
-
-                </div>
+                ${elemento1.simbolo}
+                +
+                ${elemento2.simbolo}
+                →
+                ${productos
+                    .map(
+                        producto =>
+                            producto.formula
+                    )
+                    .join(" / ")
+                }
 
             </div>
 
 
-            <!-- =========================================
-                 NOMENCLATURA
-            ========================================== -->
+            <h3>
 
-            <div
-                class="nomenclature-panel"
-                style="
-                    width:180px;
-                    flex-shrink:0;
-                "
-            >
+                ${productos.length}
 
-                <h3>
-                    Nomenclatura
-                </h3>
+                resultado${
 
-                <select
-                    id="nomenclature-select"
-                    style="
-                        width:100%;
-                        box-sizing:border-box;
-                    "
-                >
+                    productos.length === 1
+                        ? ""
+                        : "s"
 
-                    <option value="stock">
-                        Stock
-                    </option>
+                }
 
-                    <option value="iupac">
-                        IUPAC
-                    </option>
+            </h3>
 
-                    <option value="clasica">
-                        Clásica
-                    </option>
 
-                </select>
+            <div class="products-list">
+
+                ${productos
+                    .map(
+                        (producto, index) => `
+
+                            <div
+                                class="product"
+                                data-product-index="${index}"
+                            >
+
+                                <div
+                                    class="product-formula"
+                                >
+                                    ${producto.formula}
+                                </div>
+
+
+                                <div
+                                    class="product-name"
+                                >
+                                    ${obtenerNombreProducto(
+                                        producto
+                                    )}
+                                </div>
+
+
+                                <div
+                                    class="product-type"
+                                >
+                                    ${producto.type}
+                                </div>
+
+
+                                <p>
+                                    ${producto.description}
+                                </p>
+
+                            </div>
+
+                        `
+                    )
+                    .join("")
+                }
 
             </div>
 
         </div>
 
     `;
-
-
-    /*
-       Conectamos el selector recién creado.
-    */
-
-    const selector =
-        document.getElementById(
-            "nomenclature-select"
-        );
-
-
-    selector.value =
-        nomenclaturaActual;
-
-
-    selector.addEventListener(
-        "change",
-        evento => {
-
-            nomenclaturaActual =
-                evento.target.value;
-
-
-            actualizarNombresProductos();
-
-        }
-    );
 
 }
 
