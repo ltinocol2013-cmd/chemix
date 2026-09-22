@@ -243,10 +243,16 @@ const elementNames = {
 };
 
 
+/* =========================================================
+   TRADUCCIONES
+========================================================= */
+
 const translations = {
 
     es: {
-        pageTitle: "Chemix — Laboratorio de Química",
+
+        pageTitle:
+            "Chemix — Laboratorio de Química",
 
         subtitle:
             "Explora los elementos y descubre qué ocurre al combinarlos",
@@ -276,10 +282,53 @@ const translations = {
             "Chemix — Laboratorio educativo de química",
 
         footerSmall:
-            "Proyecto educativo creado con HTML, CSS y JavaScript"
+            "Proyecto educativo creado con HTML, CSS y JavaScript",
+
+        nomenclature:
+            "Nomenclatura:",
+
+        nomenclatureClassical:
+            "Clásica",
+
+        legend: {
+
+            alcalino:
+                "Alcalinos",
+
+            alcalinoterreo:
+                "Alcalinotérreos",
+
+            transicion:
+                "Transición",
+
+            postTransicion:
+                "Post-transición",
+
+            metaloide:
+                "Metaloides",
+
+            noMetal:
+                "No metales",
+
+            halogeno:
+                "Halógenos",
+
+            gasNoble:
+                "Gases nobles",
+
+            lantanido:
+                "Lantánidos",
+
+            actinido:
+                "Actínidos"
+
+        }
+
     },
 
+
     en: {
+
         pageTitle:
             "Chemix — Chemistry Laboratory",
 
@@ -311,7 +360,48 @@ const translations = {
             "Chemix — Educational Chemistry Laboratory",
 
         footerSmall:
-            "Educational project created with HTML, CSS and JavaScript"
+            "Educational project created with HTML, CSS and JavaScript",
+
+        nomenclature:
+            "Nomenclature:",
+
+        nomenclatureClassical:
+            "Classical",
+
+        legend: {
+
+            alcalino:
+                "Alkali metals",
+
+            alcalinoterreo:
+                "Alkaline earth metals",
+
+            transicion:
+                "Transition metals",
+
+            postTransicion:
+                "Post-transition metals",
+
+            metaloide:
+                "Metalloids",
+
+            noMetal:
+                "Nonmetals",
+
+            halogeno:
+                "Halogens",
+
+            gasNoble:
+                "Noble gases",
+
+            lantanido:
+                "Lanthanides",
+
+            actinido:
+                "Actinides"
+
+        }
+
     }
 
 };
@@ -324,7 +414,8 @@ const translations = {
 function actualizarNombresElementos(language) {
 
     const nombres =
-        elementNames[language] || elementNames.es;
+        elementNames[language] ||
+        elementNames.es;
 
 
     document
@@ -332,13 +423,20 @@ function actualizarNombresElementos(language) {
         .forEach(tarjeta => {
 
             const numero =
-                Number(tarjeta.dataset.numero);
+                Number(
+                    tarjeta.dataset.numero
+                );
 
             const nombre =
-                tarjeta.querySelector(".name");
+                tarjeta.querySelector(
+                    ".name"
+                );
 
 
-            if (nombre && nombres[numero]) {
+            if (
+                nombre &&
+                nombres[numero]
+            ) {
 
                 nombre.textContent =
                     nombres[numero];
@@ -354,11 +452,15 @@ function actualizarNombresElementos(language) {
 
             const numero =
                 Number(
-                    slot.querySelector(".number")?.textContent
+                    slot.querySelector(
+                        ".number"
+                    )?.textContent
                 );
 
             const nombre =
-                slot.querySelector(".name");
+                slot.querySelector(
+                    ".name"
+                );
 
 
             if (
@@ -378,197 +480,387 @@ function actualizarNombresElementos(language) {
 
 
 /* =========================================================
+   ACTUALIZAR TIPOS DE ELEMENTOS
+========================================================= */
+
+function actualizarTiposElementos(language) {
+
+    const texto =
+        translations[language] ||
+        translations.es;
+
+
+    const leyenda =
+        texto.legend;
+
+
+    const categorias = {
+
+        "alcalino":
+            leyenda.alcalino,
+
+        "alcalinoterreo":
+            leyenda.alcalinoterreo,
+
+        "transicion":
+            leyenda.transicion,
+
+        "post-transicion":
+            leyenda.postTransicion,
+
+        "metaloide":
+            leyenda.metaloide,
+
+        "no-metal":
+            leyenda.noMetal,
+
+        "halogeno":
+            leyenda.halogeno,
+
+        "gas-noble":
+            leyenda.gasNoble,
+
+        "lantanido":
+            leyenda.lantanido,
+
+        "actinido":
+            leyenda.actinido
+
+    };
+
+
+    document
+        .querySelectorAll(
+            ".legend > div"
+        )
+        .forEach(item => {
+
+            const color =
+                item.querySelector(
+                    ".legend-color"
+                );
+
+
+            if (!color) {
+                return;
+            }
+
+
+            let categoria = null;
+
+
+            Object.keys(categorias)
+                .forEach(clase => {
+
+                    if (
+                        color.classList.contains(
+                            clase
+                        )
+                    ) {
+
+                        categoria =
+                            clase;
+
+                    }
+
+                });
+
+
+            if (!categoria) {
+                return;
+            }
+
+
+            const textoActual =
+                item.lastChild;
+
+
+            if (textoActual) {
+
+                textoActual.textContent =
+                    " " +
+                    categorias[categoria];
+
+            }
+
+        });
+
+}
+
+
+/* =========================================================
    CAMBIADOR DE IDIOMA
 ========================================================= */
 
-document.addEventListener("DOMContentLoaded", () => {
+document.addEventListener(
+    "DOMContentLoaded",
+    () => {
 
-    const languageSelect =
-        document.getElementById("language-select");
-
-
-    function changeLanguage(language) {
-
-        const text =
-            translations[language];
-
-        if (!text) {
-            return;
-        }
-
-
-        document.documentElement.lang =
-            language;
-
-
-        document.title =
-            text.pageTitle;
-
-
-        const subtitle =
-            document.getElementById("subtitle");
-
-        if (subtitle) {
-            subtitle.textContent =
-                text.subtitle;
-        }
-
-
-        const periodicTitle =
-            document.getElementById("periodic-title");
-
-        if (periodicTitle) {
-            periodicTitle.textContent =
-                text.periodicTable;
-        }
-
-
-        const periodicDescription =
+        const languageSelect =
             document.getElementById(
-                "periodic-description"
+                "language-select"
             );
 
-        if (periodicDescription) {
-            periodicDescription.textContent =
-                text.periodicDescription;
-        }
+
+        function changeLanguage(language) {
+
+            const text =
+                translations[language];
 
 
-        const laboratoryTitle =
-            document.getElementById(
-                "laboratory-title"
+            if (!text) {
+                return;
+            }
+
+
+            document.documentElement.lang =
+                language;
+
+
+            document.title =
+                text.pageTitle;
+
+
+            const subtitle =
+                document.getElementById(
+                    "subtitle"
+                );
+
+
+            if (subtitle) {
+
+                subtitle.textContent =
+                    text.subtitle;
+
+            }
+
+
+            const periodicTitle =
+                document.getElementById(
+                    "periodic-title"
+                );
+
+
+            if (periodicTitle) {
+
+                periodicTitle.textContent =
+                    text.periodicTable;
+
+            }
+
+
+            const periodicDescription =
+                document.getElementById(
+                    "periodic-description"
+                );
+
+
+            if (periodicDescription) {
+
+                periodicDescription.textContent =
+                    text.periodicDescription;
+
+            }
+
+
+            const laboratoryTitle =
+                document.getElementById(
+                    "laboratory-title"
+                );
+
+
+            if (laboratoryTitle) {
+
+                laboratoryTitle.textContent =
+                    text.laboratory;
+
+            }
+
+
+            const laboratoryDescription =
+                document.getElementById(
+                    "laboratory-description"
+                );
+
+
+            if (laboratoryDescription) {
+
+                laboratoryDescription.textContent =
+                    text.laboratoryDescription;
+
+            }
+
+
+            const combineButton =
+                document.getElementById(
+                    "combine-button"
+                );
+
+
+            if (combineButton) {
+
+                combineButton.textContent =
+                    text.combine;
+
+            }
+
+
+            const emptyTitle =
+                document.getElementById(
+                    "empty-title"
+                );
+
+
+            if (emptyTitle) {
+
+                emptyTitle.textContent =
+                    text.emptyLaboratory;
+
+            }
+
+
+            const emptyDescription =
+                document.getElementById(
+                    "empty-description"
+                );
+
+
+            if (emptyDescription) {
+
+                emptyDescription.textContent =
+                    text.emptyLaboratoryDescription;
+
+            }
+
+
+            const footerText =
+                document.getElementById(
+                    "footer-text"
+                );
+
+
+            if (footerText) {
+
+                footerText.textContent =
+                    text.footer;
+
+            }
+
+
+            const footerSmall =
+                document.getElementById(
+                    "footer-small"
+                );
+
+
+            if (footerSmall) {
+
+                footerSmall.textContent =
+                    text.footerSmall;
+
+            }
+
+
+            const nomenclatureLabel =
+                document.querySelector(
+                    'label[for="nomenclature-select"]'
+                );
+
+
+            if (nomenclatureLabel) {
+
+                nomenclatureLabel.textContent =
+                    text.nomenclature;
+
+            }
+
+
+            const classicalOption =
+                document.querySelector(
+                    '#nomenclature-select option[value="clasica"]'
+                );
+
+
+            if (classicalOption) {
+
+                classicalOption.textContent =
+                    text.nomenclatureClassical;
+
+            }
+
+
+            actualizarNombresElementos(
+                language
             );
 
-        if (laboratoryTitle) {
-            laboratoryTitle.textContent =
-                text.laboratory;
-        }
 
-
-        const laboratoryDescription =
-            document.getElementById(
-                "laboratory-description"
+            actualizarTiposElementos(
+                language
             );
 
-        if (laboratoryDescription) {
-            laboratoryDescription.textContent =
-                text.laboratoryDescription;
-        }
 
-
-        const combineButton =
-            document.getElementById(
-                "combine-button"
+            localStorage.setItem(
+                "chemix-language",
+                language
             );
 
-        if (combineButton) {
-            combineButton.textContent =
-                text.combine;
         }
 
 
-        const emptyTitle =
-            document.getElementById(
-                "empty-title"
+        if (languageSelect) {
+
+            languageSelect.addEventListener(
+                "change",
+                () => {
+
+                    changeLanguage(
+                        languageSelect.value
+                    );
+
+                }
             );
 
-        if (emptyTitle) {
-            emptyTitle.textContent =
-                text.emptyLaboratory;
-        }
+
+            const savedLanguage =
+                localStorage.getItem(
+                    "chemix-language"
+                );
 
 
-        const emptyDescription =
-            document.getElementById(
-                "empty-description"
-            );
+            if (
+                savedLanguage &&
+                translations[savedLanguage]
+            ) {
 
-        if (emptyDescription) {
-            emptyDescription.textContent =
-                text.emptyLaboratoryDescription;
-        }
-
-
-        const footerText =
-            document.getElementById(
-                "footer-text"
-            );
-
-        if (footerText) {
-            footerText.textContent =
-                text.footer;
-        }
-
-
-        const footerSmall =
-            document.getElementById(
-                "footer-small"
-            );
-
-        if (footerSmall) {
-            footerSmall.textContent =
-                text.footerSmall;
-        }
-
-
-        actualizarNombresElementos(
-            language
-        );
-
-
-        localStorage.setItem(
-            "chemix-language",
-            language
-        );
-
-    }
-
-
-    if (languageSelect) {
-
-        languageSelect.addEventListener(
-            "change",
-            () => {
+                languageSelect.value =
+                    savedLanguage;
 
                 changeLanguage(
-                    languageSelect.value
+                    savedLanguage
                 );
 
             }
-        );
 
+            else {
 
-        const savedLanguage =
-            localStorage.getItem(
-                "chemix-language"
-            );
+                languageSelect.value =
+                    "es";
 
+                changeLanguage(
+                    "es"
+                );
 
-        if (
-            savedLanguage &&
-            translations[savedLanguage]
-        ) {
-
-            languageSelect.value =
-                savedLanguage;
-
-            changeLanguage(
-                savedLanguage
-            );
-
-        } else {
-
-            languageSelect.value =
-                "es";
-
-            changeLanguage("es");
+            }
 
         }
 
-    } else {
+        else {
 
-        changeLanguage("es");
+            changeLanguage(
+                "es"
+            );
+
+        }
 
     }
-
-});
+);
