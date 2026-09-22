@@ -12,6 +12,7 @@ const elementos = [
 
     { numero:1, simbolo:"H", nombre:"Hidrógeno", periodo:1, grupo:1, categoria:"no-metal" },
     { numero:2, simbolo:"He", nombre:"Helio", periodo:1, grupo:18, categoria:"gas-noble" },
+
     { numero:3, simbolo:"Li", nombre:"Litio", periodo:2, grupo:1, categoria:"alcalino" },
     { numero:4, simbolo:"Be", nombre:"Berilio", periodo:2, grupo:2, categoria:"alcalinoterreo" },
     { numero:5, simbolo:"B", nombre:"Boro", periodo:2, grupo:13, categoria:"metaloide" },
@@ -142,243 +143,89 @@ const elementos = [
 
 
 /* =========================================================
-   VARIABLES
+   ESTADO
 ========================================================= */
 
-let seleccionados = [null, null];
+const seleccionados = [
+    null,
+    null
+];
 
 let siguientePosicion = 0;
 
 let nomenclaturaActual = "stock";
 
-let idiomaActual =
-    localStorage.getItem("chemix-language") || "es";
 
+/* =========================================================
+   ELEMENTOS HTML
+========================================================= */
 
 const tabla =
-    document.getElementById("periodic-table");
+    document.getElementById(
+        "periodic-table"
+    );
 
 const slots =
-    document.querySelectorAll(".element-slot");
-
-const resultado =
-    document.getElementById("result");
+    document.querySelectorAll(
+        ".element-slot"
+    );
 
 const botonCombinar =
-    document.getElementById("combine-button");
+    document.getElementById(
+        "combine-button"
+    );
+
+const resultado =
+    document.getElementById(
+        "result"
+    );
+
+const selectorNomenclatura =
+    document.getElementById(
+        "nomenclature-select"
+    );
 
 
 /* =========================================================
-   NOMBRES DE ELEMENTOS
+   IDIOMA ACTUAL
 ========================================================= */
 
-const nombresElementosEN = {
+function obtenerIdiomaActual() {
 
-    1:"Hydrogen",
-    2:"Helium",
-    3:"Lithium",
-    4:"Beryllium",
-    5:"Boron",
-    6:"Carbon",
-    7:"Nitrogen",
-    8:"Oxygen",
-    9:"Fluorine",
-    10:"Neon",
-
-    11:"Sodium",
-    12:"Magnesium",
-    13:"Aluminium",
-    14:"Silicon",
-    15:"Phosphorus",
-    16:"Sulfur",
-    17:"Chlorine",
-    18:"Argon",
-
-    19:"Potassium",
-    20:"Calcium",
-    21:"Scandium",
-    22:"Titanium",
-    23:"Vanadium",
-    24:"Chromium",
-    25:"Manganese",
-    26:"Iron",
-    27:"Cobalt",
-    28:"Nickel",
-    29:"Copper",
-    30:"Zinc",
-
-    31:"Gallium",
-    32:"Germanium",
-    33:"Arsenic",
-    34:"Selenium",
-    35:"Bromine",
-    36:"Krypton",
-
-    37:"Rubidium",
-    38:"Strontium",
-    39:"Yttrium",
-    40:"Zirconium",
-    41:"Niobium",
-    42:"Molybdenum",
-    43:"Technetium",
-    44:"Ruthenium",
-    45:"Rhodium",
-    46:"Palladium",
-    47:"Silver",
-    48:"Cadmium",
-    49:"Indium",
-    50:"Tin",
-    51:"Antimony",
-    52:"Tellurium",
-    53:"Iodine",
-    54:"Xenon",
-
-    55:"Caesium",
-    56:"Barium",
-    57:"Lanthanum",
-    58:"Cerium",
-    59:"Praseodymium",
-    60:"Neodymium",
-    61:"Promethium",
-    62:"Samarium",
-    63:"Europium",
-    64:"Gadolinium",
-    65:"Terbium",
-    66:"Dysprosium",
-    67:"Holmium",
-    68:"Erbium",
-    69:"Thulium",
-    70:"Ytterbium",
-    71:"Lutetium",
-
-    72:"Hafnium",
-    73:"Tantalum",
-    74:"Tungsten",
-    75:"Rhenium",
-    76:"Osmium",
-    77:"Iridium",
-    78:"Platinum",
-    79:"Gold",
-    80:"Mercury",
-    81:"Thallium",
-    82:"Lead",
-    83:"Bismuth",
-    84:"Polonium",
-    85:"Astatine",
-    86:"Radon",
-
-    87:"Francium",
-    88:"Radium",
-    89:"Actinium",
-    90:"Thorium",
-    91:"Protactinium",
-    92:"Uranium",
-    93:"Neptunium",
-    94:"Plutonium",
-    95:"Americium",
-    96:"Curium",
-    97:"Berkelium",
-    98:"Californium",
-    99:"Einsteinium",
-    100:"Fermium",
-    101:"Mendelevium",
-    102:"Nobelium",
-    103:"Lawrencium",
-
-    104:"Rutherfordium",
-    105:"Dubnium",
-    106:"Seaborgium",
-    107:"Bohrium",
-    108:"Hassium",
-    109:"Meitnerium",
-    110:"Darmstadtium",
-    111:"Roentgenium",
-    112:"Copernicium",
-    113:"Nihonium",
-    114:"Flerovium",
-    115:"Moscovium",
-    116:"Livermorium",
-    117:"Tennessine",
-    118:"Oganesson"
-
-};
-
-
-/* =========================================================
-   TEXTOS DE RESULTADOS
-========================================================= */
-
-const textosResultado = {
-
-    es: {
-
-        faltanTitulo:
-            "Faltan elementos",
-
-        faltanDescripcion:
-            "Coloca dos elementos en el laboratorio.",
-
-        sinCombinacionTitulo:
-            "Sin combinación registrada",
-
-        sinCombinacionDescripcion:
-            "Chemix todavía no tiene esta combinación en su base de datos.",
-
-        resultadoSingular:
-            "resultado",
-
-        resultadoPlural:
-            "resultados",
-
-        sinNombre:
-            "Sin nombre registrado"
-
-    },
-
-    en: {
-
-        faltanTitulo:
-            "Elements missing",
-
-        faltanDescripcion:
-            "Place two elements in the laboratory.",
-
-        sinCombinacionTitulo:
-            "No registered combination",
-
-        sinCombinacionDescripcion:
-            "Chemix does not have this combination in its database yet.",
-
-        resultadoSingular:
-            "result",
-
-        resultadoPlural:
-            "results",
-
-        sinNombre:
-            "No registered name"
-
-    }
-
-};
-
-
-/* =========================================================
-   OBTENER NOMBRE DE ELEMENTO
-========================================================= */
-
-function obtenerNombreElemento(elemento) {
+    const idioma =
+        document.documentElement.lang;
 
     if (
-        idiomaActual === "en" &&
-        nombresElementosEN[elemento.numero]
+        idioma === "en" ||
+        idioma === "es"
     ) {
-
-        return nombresElementosEN[elemento.numero];
-
+        return idioma;
     }
 
-    return elemento.nombre;
+    return "es";
+}
+
+
+/* =========================================================
+   SELECTOR DE NOMENCLATURA
+========================================================= */
+
+if (selectorNomenclatura) {
+
+    selectorNomenclatura.value =
+        nomenclaturaActual;
+
+    selectorNomenclatura.addEventListener(
+        "change",
+        evento => {
+
+            nomenclaturaActual =
+                evento.target.value;
+
+            actualizarNombresProductos();
+
+        }
+    );
 
 }
 
@@ -395,27 +242,24 @@ function crearTabla() {
         elemento => {
 
             const tarjeta =
-                document.createElement("div");
-
+                document.createElement(
+                    "div"
+                );
 
             tarjeta.className =
                 `element ${elemento.categoria}`;
 
-
-            tarjeta.draggable = true;
-
-
-            tarjeta.dataset.numero =
-                elemento.numero;
-
-
             tarjeta.style.gridColumn =
                 elemento.grupo;
-
 
             tarjeta.style.gridRow =
                 elemento.periodo;
 
+            tarjeta.draggable =
+                true;
+
+            tarjeta.dataset.numero =
+                elemento.numero;
 
             tarjeta.innerHTML = `
 
@@ -428,7 +272,7 @@ function crearTabla() {
                 </span>
 
                 <span class="name">
-                    ${obtenerNombreElemento(elemento)}
+                    ${elemento.nombre}
                 </span>
 
             `;
@@ -498,7 +342,6 @@ function colocarElemento(elemento) {
 
     }
 
-
     actualizarSlots();
 
 }
@@ -516,7 +359,6 @@ function actualizarSlots() {
             const elemento =
                 seleccionados[index];
 
-
             if (!elemento) {
 
                 slot.className =
@@ -529,10 +371,8 @@ function actualizarSlots() {
 
             }
 
-
             slot.className =
                 `element-slot filled ${elemento.categoria}`;
-
 
             slot.innerHTML = `
 
@@ -545,7 +385,7 @@ function actualizarSlots() {
                 </span>
 
                 <span class="name">
-                    ${obtenerNombreElemento(elemento)}
+                    ${elemento.nombre}
                 </span>
 
             `;
@@ -611,8 +451,14 @@ slots.forEach(
 
                 const elemento =
                     elementos.find(
-                        item =>
-                            item.numero === numero
+                        function(item) {
+
+                            return (
+                                item.numero ===
+                                numero
+                            );
+
+                        }
                     );
 
 
@@ -624,12 +470,10 @@ slots.forEach(
                 seleccionados[index] =
                     elemento;
 
-
                 siguientePosicion =
                     index === 0
                         ? 1
                         : 0;
-
 
                 actualizarSlots();
 
@@ -644,10 +488,8 @@ slots.forEach(
                 seleccionados[index] =
                     null;
 
-
                 siguientePosicion =
                     index;
-
 
                 actualizarSlots();
 
@@ -670,7 +512,6 @@ function obtenerClave(
     const clave1 =
         `${elemento1.simbolo}-${elemento2.simbolo}`;
 
-
     const clave2 =
         `${elemento2.simbolo}-${elemento1.simbolo}`;
 
@@ -691,64 +532,40 @@ function obtenerClave(
 
 
 /* =========================================================
-   OBTENER NOMBRE SEGÚN IDIOMA Y NOMENCLATURA
+   OBTENER NOMBRE DEL PRODUCTO
 ========================================================= */
 
 function obtenerNombreProducto(producto) {
 
-    if (!producto) {
+    const idioma =
+        obtenerIdiomaActual();
 
-        return textosResultado[
-            idiomaActual
-        ].sinNombre;
-
-    }
-
-
-    /*
-       Nuevo formato:
-
-       names: {
-           es: {
-               stock: "...",
-               iupac: "...",
-               clasica: "..."
-           },
-           en: {
-               stock: "...",
-               iupac: "...",
-               clasica: "..."
-           }
-       }
-    */
 
     if (
         producto.names &&
-        producto.names[idiomaActual] &&
-        producto.names[idiomaActual][
-            nomenclaturaActual
-        ]
+        producto.names[idioma]
     ) {
 
-        return producto.names[
-            idiomaActual
-        ][
-            nomenclaturaActual
-        ];
+        return (
+            producto.names[idioma][
+                nomenclaturaActual
+            ] ||
+
+            producto.names[idioma].stock ||
+
+            producto.names[idioma].clasica ||
+
+            producto.names[idioma].iupac ||
+
+            "Sin nombre registrado"
+        );
 
     }
 
 
-    /*
-       Compatibilidad con el formato
-       antiguo en español.
-    */
-
     if (
         producto.names &&
-        producto.names[
-            nomenclaturaActual
-        ]
+        producto.names[nomenclaturaActual]
     ) {
 
         return producto.names[
@@ -759,38 +576,35 @@ function obtenerNombreProducto(producto) {
 
 
     if (producto.name) {
-
         return producto.name;
-
     }
 
 
-    return textosResultado[
-        idiomaActual
-    ].sinNombre;
+    return "Sin nombre registrado";
 
 }
 
 
 /* =========================================================
-   OBTENER TIPO DEL PRODUCTO
+   OBTENER TIPO
 ========================================================= */
 
 function obtenerTipoProducto(producto) {
 
-    if (!producto) {
-        return "";
-    }
+    const idioma =
+        obtenerIdiomaActual();
 
 
     if (
-        typeof producto.type === "object" &&
-        producto.type[idiomaActual]
+        producto.type &&
+        typeof producto.type === "object"
     ) {
 
-        return producto.type[
-            idiomaActual
-        ];
+        return (
+            producto.type[idioma] ||
+            producto.type.es ||
+            ""
+        );
 
     }
 
@@ -801,24 +615,25 @@ function obtenerTipoProducto(producto) {
 
 
 /* =========================================================
-   OBTENER DESCRIPCIÓN DEL PRODUCTO
+   OBTENER DESCRIPCIÓN
 ========================================================= */
 
 function obtenerDescripcionProducto(producto) {
 
-    if (!producto) {
-        return "";
-    }
+    const idioma =
+        obtenerIdiomaActual();
 
 
     if (
-        typeof producto.description === "object" &&
-        producto.description[idiomaActual]
+        producto.description &&
+        typeof producto.description === "object"
     ) {
 
-        return producto.description[
-            idiomaActual
-        ];
+        return (
+            producto.description[idioma] ||
+            producto.description.es ||
+            ""
+        );
 
     }
 
@@ -829,18 +644,18 @@ function obtenerDescripcionProducto(producto) {
 
 
 /* =========================================================
-   ACTUALIZAR NOMBRES DE PRODUCTOS
+   ACTUALIZAR RESULTADOS AL CAMBIAR IDIOMA
 ========================================================= */
 
 function actualizarNombresProductos() {
 
-    const productos =
+    const productosHTML =
         document.querySelectorAll(
             ".product"
         );
 
 
-    productos.forEach(
+    productosHTML.forEach(
         productoHTML => {
 
             const clave =
@@ -873,12 +688,10 @@ function actualizarNombresProductos() {
                     ".product-name"
                 );
 
-
             const tipo =
                 productoHTML.querySelector(
                     ".product-type"
                 );
-
 
             const descripcion =
                 productoHTML.querySelector(
@@ -918,39 +731,95 @@ function actualizarNombresProductos() {
         }
     );
 
+
+    actualizarTituloResultados();
+
 }
 
 
 /* =========================================================
-   ACTUALIZAR IDIOMA
+   ACTUALIZAR TEXTO DE RESULTADOS
 ========================================================= */
 
-window.actualizarIdiomaResultados =
-    function(language) {
+function actualizarTituloResultados() {
 
-        idiomaActual =
-            language === "en"
-                ? "en"
-                : "es";
-
-
-        crearTabla();
-
-        actualizarSlots();
-
-        actualizarNombresProductos();
+    const titulo =
+        resultado.querySelector(
+            ".combination-result h3"
+        );
 
 
-        if (
-            window.productosActuales &&
-            window.productosActuales.length
-        ) {
+    if (!titulo || !window.productosActuales) {
+        return;
+    }
 
-            combinar();
+
+    const idioma =
+        obtenerIdiomaActual();
+
+    const cantidad =
+        window.productosActuales.length;
+
+
+    if (idioma === "en") {
+
+        titulo.textContent =
+            cantidad === 1
+                ? "1 result"
+                : `${cantidad} results`;
+
+    }
+
+    else {
+
+        titulo.textContent =
+            cantidad === 1
+                ? "1 resultado"
+                : `${cantidad} resultados`;
+
+    }
+
+}
+
+
+/* =========================================================
+   OBSERVAR CAMBIO DE IDIOMA
+========================================================= */
+
+const observadorIdioma =
+    new MutationObserver(
+        cambios => {
+
+            cambios.forEach(
+                cambio => {
+
+                    if (
+                        cambio.type ===
+                        "attributes" &&
+                        cambio.attributeName ===
+                        "lang"
+                    ) {
+
+                        actualizarNombresProductos();
+
+                    }
+
+                }
+            );
 
         }
+    );
 
-    };
+
+observadorIdioma.observe(
+    document.documentElement,
+    {
+        attributes: true,
+        attributeFilter: [
+            "lang"
+        ]
+    }
+);
 
 
 /* =========================================================
@@ -962,15 +831,8 @@ function combinar() {
     const elemento1 =
         seleccionados[0];
 
-
     const elemento2 =
         seleccionados[1];
-
-
-    const textos =
-        textosResultado[
-            idiomaActual
-        ];
 
 
     if (!elemento1 || !elemento2) {
@@ -984,11 +846,19 @@ function combinar() {
                 </div>
 
                 <h3>
-                    ${textos.faltanTitulo}
+                    ${
+                        obtenerIdiomaActual() === "en"
+                            ? "Missing elements"
+                            : "Faltan elementos"
+                    }
                 </h3>
 
                 <p>
-                    ${textos.faltanDescripcion}
+                    ${
+                        obtenerIdiomaActual() === "en"
+                            ? "Place two elements in the laboratory."
+                            : "Coloca dos elementos en el laboratorio."
+                    }
                 </p>
 
             </div>
@@ -1018,11 +888,19 @@ function combinar() {
                 </div>
 
                 <h3>
-                    ${textos.sinCombinacionTitulo}
+                    ${
+                        obtenerIdiomaActual() === "en"
+                            ? "No combination registered"
+                            : "Sin combinación registrada"
+                    }
                 </h3>
 
                 <p>
-                    ${textos.sinCombinacionDescripcion}
+                    ${
+                        obtenerIdiomaActual() === "en"
+                            ? "Chemix does not have this combination in its database yet."
+                            : "Chemix todavía no tiene esta combinación en su base de datos."
+                    }
                 </p>
 
             </div>
@@ -1049,11 +927,19 @@ function combinar() {
                 </div>
 
                 <h3>
-                    ${textos.sinCombinacionTitulo}
+                    ${
+                        obtenerIdiomaActual() === "en"
+                            ? "No combination registered"
+                            : "Sin combinación registrada"
+                    }
                 </h3>
 
                 <p>
-                    ${textos.sinCombinacionDescripcion}
+                    ${
+                        obtenerIdiomaActual() === "en"
+                            ? "Chemix does not have this combination in its database yet."
+                            : "Chemix todavía no tiene esta combinación en su base de datos."
+                    }
                 </p>
 
             </div>
@@ -1069,10 +955,26 @@ function combinar() {
         productos;
 
 
+    const idioma =
+        obtenerIdiomaActual();
+
+
+    const cantidad =
+        productos.length;
+
+
     const textoResultados =
-        productos.length === 1
-            ? textos.resultadoSingular
-            : textos.resultadoPlural;
+        idioma === "en"
+            ? (
+                cantidad === 1
+                    ? "1 result"
+                    : `${cantidad} results`
+            )
+            : (
+                cantidad === 1
+                    ? "1 resultado"
+                    : `${cantidad} resultados`
+            );
 
 
     resultado.innerHTML = `
@@ -1082,9 +984,13 @@ function combinar() {
             <div class="reaction">
 
                 ${elemento1.simbolo}
+
                 +
+
                 ${elemento2.simbolo}
+
                 →
+
                 ${productos
                     .map(
                         producto =>
@@ -1097,11 +1003,7 @@ function combinar() {
 
 
             <h3>
-
-                ${productos.length}
-
                 ${textoResultados}
-
             </h3>
 
 
@@ -1169,10 +1071,14 @@ function combinar() {
    BOTÓN COMBINAR
 ========================================================= */
 
-botonCombinar.addEventListener(
-    "click",
-    combinar
-);
+if (botonCombinar) {
+
+    botonCombinar.addEventListener(
+        "click",
+        combinar
+    );
+
+}
 
 
 /* =========================================================
