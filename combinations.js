@@ -1,8 +1,51 @@
 /* =========================================================
    CHEMIX
    COMBINACIONES
-   CLAVES NORMALIZADAS + NOMENCLATURAS
+   ESPAÑOL + INGLÉS
 ========================================================= */
+
+function producto(
+    formula,
+    stockEs,
+    iupacEs,
+    clasicaEs,
+    stockEn,
+    iupacEn,
+    clasicaEn,
+    tipoEs,
+    tipoEn,
+    descripcionEs,
+    descripcionEn
+) {
+    return {
+        formula: formula,
+
+        names: {
+            es: {
+                stock: stockEs,
+                iupac: iupacEs,
+                clasica: clasicaEs
+            },
+
+            en: {
+                stock: stockEn,
+                iupac: iupacEn,
+                clasica: clasicaEn
+            }
+        },
+
+        type: {
+            es: tipoEs,
+            en: tipoEn
+        },
+
+        description: {
+            es: descripcionEs,
+            en: descripcionEn
+        }
+    };
+}
+
 
 const combinations = {
 
@@ -11,107 +54,131 @@ const combinations = {
     ===================================================== */
 
     "Cl-H": [
-        {
-            formula: "HCl",
-            names: {
-                stock: "Cloruro de hidrógeno",
-                iupac: "Cloruro de hidrógeno",
-                clasica: "Ácido clorhídrico"
-            },
-            type: "Haluros",
-            description: "Compuesto formado por hidrógeno y cloro."
-        }
+        producto(
+            "HCl",
+            "Cloruro de hidrógeno",
+            "Cloruro de hidrógeno",
+            "Ácido clorhídrico",
+            "Hydrogen chloride",
+            "Hydrogen chloride",
+            "Hydrochloric acid",
+            "Haluros",
+            "Halides",
+            "Compuesto formado por hidrógeno y cloro.",
+            "Compound formed by hydrogen and chlorine."
+        )
     ],
 
     "Br-H": [
-        {
-            formula: "HBr",
-            names: {
-                stock: "Bromuro de hidrógeno",
-                iupac: "Bromuro de hidrógeno",
-                clasica: "Ácido bromhídrico"
-            },
-            type: "Haluros",
-            description: "Compuesto formado por hidrógeno y bromo."
-        }
+        producto(
+            "HBr",
+            "Bromuro de hidrógeno",
+            "Bromuro de hidrógeno",
+            "Ácido bromhídrico",
+            "Hydrogen bromide",
+            "Hydrogen bromide",
+            "Hydrobromic acid",
+            "Haluros",
+            "Halides",
+            "Compuesto formado por hidrógeno y bromo.",
+            "Compound formed by hydrogen and bromine."
+        )
     ],
 
     "F-H": [
-        {
-            formula: "HF",
-            names: {
-                stock: "Fluoruro de hidrógeno",
-                iupac: "Fluoruro de hidrógeno",
-                clasica: "Ácido fluorhídrico"
-            },
-            type: "Haluros",
-            description: "Compuesto formado por hidrógeno y flúor."
-        }
+        producto(
+            "HF",
+            "Fluoruro de hidrógeno",
+            "Fluoruro de hidrógeno",
+            "Ácido fluorhídrico",
+            "Hydrogen fluoride",
+            "Hydrogen fluoride",
+            "Hydrofluoric acid",
+            "Haluros",
+            "Halides",
+            "Compuesto formado por hidrógeno y flúor.",
+            "Compound formed by hydrogen and fluorine."
+        )
     ],
 
     "H-I": [
-        {
-            formula: "HI",
-            names: {
-                stock: "Yoduro de hidrógeno",
-                iupac: "Yoduro de hidrógeno",
-                clasica: "Ácido yodhídrico"
-            },
-            type: "Haluros",
-            description: "Compuesto formado por hidrógeno y yodo."
-        }
+        producto(
+            "HI",
+            "Yoduro de hidrógeno",
+            "Yoduro de hidrógeno",
+            "Ácido yodhídrico",
+            "Hydrogen iodide",
+            "Hydrogen iodide",
+            "Hydroiodic acid",
+            "Haluros",
+            "Halides",
+            "Compuesto formado por hidrógeno y yodo.",
+            "Compound formed by hydrogen and iodine."
+        )
     ],
 
     "H-O": [
-        {
-            formula: "H₂O",
-            names: {
-                stock: "Óxido de hidrógeno",
-                iupac: "Oxidano",
-                clasica: "Agua"
-            },
-            type: "Óxido",
-            description: "Compuesto formado por hidrógeno y oxígeno."
-        }
+        producto(
+            "H₂O",
+            "Óxido de hidrógeno",
+            "Oxidano",
+            "Agua",
+            "Hydrogen oxide",
+            "Oxidane",
+            "Water",
+            "Óxido",
+            "Oxide",
+            "Compuesto formado por hidrógeno y oxígeno.",
+            "Compound formed by hydrogen and oxygen."
+        )
     ],
 
     "H-S": [
-        {
-            formula: "H₂S",
-            names: {
-                stock: "Sulfuro de hidrógeno",
-                iupac: "Sulfuro de hidrógeno",
-                clasica: "Ácido sulfhídrico"
-            },
-            type: "Sulfuro",
-            description: "Compuesto formado por hidrógeno y azufre."
-        }
+        producto(
+            "H₂S",
+            "Sulfuro de hidrógeno",
+            "Sulfuro de hidrógeno",
+            "Ácido sulfhídrico",
+            "Hydrogen sulfide",
+            "Hydrogen sulfide",
+            "Hydrosulfuric acid",
+            "Sulfuro",
+            "Sulfide",
+            "Compuesto formado por hidrógeno y azufre.",
+            "Compound formed by hydrogen and sulfur."
+        )
     ],
 
     "C-H": [
-        {
-            formula: "CH₄",
-            names: {
-                stock: "Hidruro de carbono(IV)",
-                iupac: "Metano",
-                clasica: "Metano"
-            },
-            type: "Hidrocarburo",
-            description: "El hidrocarburo más simple."
-        }
+        producto(
+            "CH₄",
+            "Hidruro de carbono(IV)",
+            "Metano",
+            "Metano",
+            "Carbon(IV) hydride",
+            "Methane",
+            "Methane",
+            "Hidrocarburo",
+            "Hydrocarbon",
+            "El hidrocarburo más simple.",
+            "The simplest hydrocarbon."
+        )
     ],
 
     "H-N": [
-        {
-            formula: "NH₃",
-            names: {
-                stock: "Hidruro de nitrógeno(III)",
-                iupac: "Azano",
-                clasica: "Amoníaco"
-            },
-            type: "Hidruro",
-            description: "Compuesto formado por nitrógeno e hidrógeno."
-        }
+        producto(
+            "NH₃",
+            "Hidruro de nitrógeno(III)",
+            "Azano",
+            "Amoníaco",
+            "Nitrogen(III) hydride",
+            "Azane",
+            "Ammonia",
+            "Hidruro",
+            "Hydride",
+            "Compuesto formado por nitrógeno e hidrógeno.",
+            "Compound formed by nitrogen and hydrogen."
+        )
     ],
 
 
@@ -120,120 +187,147 @@ const combinations = {
     ===================================================== */
 
     "Cl-Li": [
-        {
-            formula: "LiCl",
-            names: {
-                stock: "Cloruro de litio",
-                iupac: "Cloruro de litio",
-                clasica: "Cloruro de litio"
-            },
-            type: "Sal",
-            description: "Sal formada por litio y cloro."
-        }
+        producto(
+            "LiCl",
+            "Cloruro de litio",
+            "Cloruro de litio",
+            "Cloruro de litio",
+            "Lithium chloride",
+            "Lithium chloride",
+            "Lithium chloride",
+            "Sal",
+            "Salt",
+            "Sal formada por litio y cloro.",
+            "Salt formed by lithium and chlorine."
+        )
     ],
 
     "H-Li": [
-        {
-            formula: "LiH",
-            names: {
-                stock: "Hidruro de litio",
-                iupac: "Hidruro de litio",
-                clasica: "Hidruro de litio"
-            },
-            type: "Hidruro",
-            description: "Hidruro formado por litio e hidrógeno."
-        }
+        producto(
+            "LiH",
+            "Hidruro de litio",
+            "Hidruro de litio",
+            "Hidruro de litio",
+            "Lithium hydride",
+            "Lithium hydride",
+            "Lithium hydride",
+            "Hidruro",
+            "Hydride",
+            "Hidruro formado por litio e hidrógeno.",
+            "Hydride formed by lithium and hydrogen."
+        )
     ],
 
     "Li-O": [
-        {
-            formula: "Li₂O",
-            names: {
-                stock: "Óxido de litio",
-                iupac: "Monóxido de dilitio",
-                clasica: "Óxido de litio"
-            },
-            type: "Óxido",
-            description: "Óxido formado por litio y oxígeno."
-        }
+        producto(
+            "Li₂O",
+            "Óxido de litio",
+            "Monóxido de dilitio",
+            "Óxido de litio",
+            "Lithium oxide",
+            "Dilithium monoxide",
+            "Lithium oxide",
+            "Óxido",
+            "Oxide",
+            "Óxido formado por litio y oxígeno.",
+            "Oxide formed by lithium and oxygen."
+        )
     ],
 
     "Cl-Na": [
-        {
-            formula: "NaCl",
-            names: {
-                stock: "Cloruro de sodio",
-                iupac: "Cloruro de sodio",
-                clasica: "Cloruro sódico"
-            },
-            type: "Sal",
-            description: "La sal común."
-        }
+        producto(
+            "NaCl",
+            "Cloruro de sodio",
+            "Cloruro de sodio",
+            "Cloruro sódico",
+            "Sodium chloride",
+            "Sodium chloride",
+            "Sodium chloride",
+            "Sal",
+            "Salt",
+            "La sal común.",
+            "Common table salt."
+        )
     ],
 
     "H-Na": [
-        {
-            formula: "NaH",
-            names: {
-                stock: "Hidruro de sodio",
-                iupac: "Hidruro de sodio",
-                clasica: "Hidruro sódico"
-            },
-            type: "Hidruro",
-            description: "Hidruro formado por sodio e hidrógeno."
-        }
+        producto(
+            "NaH",
+            "Hidruro de sodio",
+            "Hidruro de sodio",
+            "Hidruro sódico",
+            "Sodium hydride",
+            "Sodium hydride",
+            "Sodium hydride",
+            "Hidruro",
+            "Hydride",
+            "Hidruro formado por sodio e hidrógeno.",
+            "Hydride formed by sodium and hydrogen."
+        )
     ],
 
     "Na-O": [
-        {
-            formula: "Na₂O",
-            names: {
-                stock: "Óxido de sodio",
-                iupac: "Monóxido de disodio",
-                clasica: "Óxido sódico"
-            },
-            type: "Óxido",
-            description: "Óxido formado por sodio y oxígeno."
-        }
+        producto(
+            "Na₂O",
+            "Óxido de sodio",
+            "Monóxido de disodio",
+            "Óxido sódico",
+            "Sodium oxide",
+            "Disodium monoxide",
+            "Sodium oxide",
+            "Óxido",
+            "Oxide",
+            "Óxido formado por sodio y oxígeno.",
+            "Oxide formed by sodium and oxygen."
+        )
     ],
 
     "Cl-K": [
-        {
-            formula: "KCl",
-            names: {
-                stock: "Cloruro de potasio",
-                iupac: "Cloruro de potasio",
-                clasica: "Cloruro potásico"
-            },
-            type: "Sal",
-            description: "Sal formada por potasio y cloro."
-        }
+        producto(
+            "KCl",
+            "Cloruro de potasio",
+            "Cloruro de potasio",
+            "Cloruro potásico",
+            "Potassium chloride",
+            "Potassium chloride",
+            "Potassium chloride",
+            "Sal",
+            "Salt",
+            "Sal formada por potasio y cloro.",
+            "Salt formed by potassium and chlorine."
+        )
     ],
 
     "H-K": [
-        {
-            formula: "KH",
-            names: {
-                stock: "Hidruro de potasio",
-                iupac: "Hidruro de potasio",
-                clasica: "Hidruro potásico"
-            },
-            type: "Hidruro",
-            description: "Hidruro formado por potasio e hidrógeno."
-        }
+        producto(
+            "KH",
+            "Hidruro de potasio",
+            "Hidruro de potasio",
+            "Hidruro potásico",
+            "Potassium hydride",
+            "Potassium hydride",
+            "Potassium hydride",
+            "Hidruro",
+            "Hydride",
+            "Hidruro formado por potasio e hidrógeno.",
+            "Hydride formed by potassium and hydrogen."
+        )
     ],
 
     "K-O": [
-        {
-            formula: "K₂O",
-            names: {
-                stock: "Óxido de potasio",
-                iupac: "Monóxido de dipotasio",
-                clasica: "Óxido potásico"
-            },
-            type: "Óxido",
-            description: "Óxido formado por potasio y oxígeno."
-        }
+        producto(
+            "K₂O",
+            "Óxido de potasio",
+            "Monóxido de dipotasio",
+            "Óxido potásico",
+            "Potassium oxide",
+            "Dipotassium monoxide",
+            "Potassium oxide",
+            "Óxido",
+            "Oxide",
+            "Óxido formado por potasio y oxígeno.",
+            "Oxide formed by potassium and oxygen."
+        )
     ],
 
 
@@ -242,159 +336,195 @@ const combinations = {
     ===================================================== */
 
     "Cl-Be": [
-        {
-            formula: "BeCl₂",
-            names: {
-                stock: "Cloruro de berilio",
-                iupac: "Dicloruro de berilio",
-                clasica: "Cloruro berílico"
-            },
-            type: "Sal",
-            description: "Compuesto formado por berilio y cloro."
-        }
+        producto(
+            "BeCl₂",
+            "Cloruro de berilio",
+            "Dicloruro de berilio",
+            "Cloruro berílico",
+            "Beryllium chloride",
+            "Beryllium dichloride",
+            "Beryllium chloride",
+            "Sal",
+            "Salt",
+            "Compuesto formado por berilio y cloro.",
+            "Compound formed by beryllium and chlorine."
+        )
     ],
 
     "Be-O": [
-        {
-            formula: "BeO",
-            names: {
-                stock: "Óxido de berilio",
-                iupac: "Monóxido de berilio",
-                clasica: "Óxido berílico"
-            },
-            type: "Óxido",
-            description: "Óxido formado por berilio y oxígeno."
-        }
+        producto(
+            "BeO",
+            "Óxido de berilio",
+            "Monóxido de berilio",
+            "Óxido berílico",
+            "Beryllium oxide",
+            "Beryllium monoxide",
+            "Beryllium oxide",
+            "Óxido",
+            "Oxide",
+            "Óxido formado por berilio y oxígeno.",
+            "Oxide formed by beryllium and oxygen."
+        )
     ],
 
     "Cl-Ca": [
-        {
-            formula: "CaCl₂",
-            names: {
-                stock: "Cloruro de calcio",
-                iupac: "Dicloruro de calcio",
-                clasica: "Cloruro cálcico"
-            },
-            type: "Sal",
-            description: "Sal formada por calcio y cloro."
-        }
+        producto(
+            "CaCl₂",
+            "Cloruro de calcio",
+            "Dicloruro de calcio",
+            "Cloruro cálcico",
+            "Calcium chloride",
+            "Calcium dichloride",
+            "Calcium chloride",
+            "Sal",
+            "Salt",
+            "Sal formada por calcio y cloro.",
+            "Salt formed by calcium and chlorine."
+        )
     ],
 
     "Ca-H": [
-        {
-            formula: "CaH₂",
-            names: {
-                stock: "Hidruro de calcio",
-                iupac: "Dihidruro de calcio",
-                clasica: "Hidruro cálcico"
-            },
-            type: "Hidruro",
-            description: "Hidruro formado por calcio e hidrógeno."
-        }
+        producto(
+            "CaH₂",
+            "Hidruro de calcio",
+            "Dihidruro de calcio",
+            "Hidruro cálcico",
+            "Calcium hydride",
+            "Calcium dihydride",
+            "Calcium hydride",
+            "Hidruro",
+            "Hydride",
+            "Hidruro formado por calcio e hidrógeno.",
+            "Hydride formed by calcium and hydrogen."
+        )
     ],
 
     "Ca-O": [
-        {
-            formula: "CaO",
-            names: {
-                stock: "Óxido de calcio",
-                iupac: "Monóxido de calcio",
-                clasica: "Óxido cálcico"
-            },
-            type: "Óxido",
-            description: "También conocido como cal viva."
-        }
+        producto(
+            "CaO",
+            "Óxido de calcio",
+            "Monóxido de calcio",
+            "Óxido cálcico",
+            "Calcium oxide",
+            "Calcium monoxide",
+            "Calcium oxide",
+            "Óxido",
+            "Oxide",
+            "También conocido como cal viva.",
+            "Also known as quicklime."
+        )
     ],
 
     "Cl-Mg": [
-        {
-            formula: "MgCl₂",
-            names: {
-                stock: "Cloruro de magnesio",
-                iupac: "Dicloruro de magnesio",
-                clasica: "Cloruro magnésico"
-            },
-            type: "Sal",
-            description: "Sal formada por magnesio y cloro."
-        }
+        producto(
+            "MgCl₂",
+            "Cloruro de magnesio",
+            "Dicloruro de magnesio",
+            "Cloruro magnésico",
+            "Magnesium chloride",
+            "Magnesium dichloride",
+            "Magnesium chloride",
+            "Sal",
+            "Salt",
+            "Sal formada por magnesio y cloro.",
+            "Salt formed by magnesium and chlorine."
+        )
     ],
 
     "H-Mg": [
-        {
-            formula: "MgH₂",
-            names: {
-                stock: "Hidruro de magnesio",
-                iupac: "Dihidruro de magnesio",
-                clasica: "Hidruro magnésico"
-            },
-            type: "Hidruro",
-            description: "Hidruro formado por magnesio e hidrógeno."
-        }
+        producto(
+            "MgH₂",
+            "Hidruro de magnesio",
+            "Dihidruro de magnesio",
+            "Hidruro magnésico",
+            "Magnesium hydride",
+            "Magnesium dihydride",
+            "Magnesium hydride",
+            "Hidruro",
+            "Hydride",
+            "Hidruro formado por magnesio e hidrógeno.",
+            "Hydride formed by magnesium and hydrogen."
+        )
     ],
 
     "Mg-O": [
-        {
-            formula: "MgO",
-            names: {
-                stock: "Óxido de magnesio",
-                iupac: "Monóxido de magnesio",
-                clasica: "Óxido magnésico"
-            },
-            type: "Óxido",
-            description: "Óxido formado por magnesio y oxígeno."
-        }
+        producto(
+            "MgO",
+            "Óxido de magnesio",
+            "Monóxido de magnesio",
+            "Óxido magnésico",
+            "Magnesium oxide",
+            "Magnesium monoxide",
+            "Magnesium oxide",
+            "Óxido",
+            "Oxide",
+            "Óxido formado por magnesio y oxígeno.",
+            "Oxide formed by magnesium and oxygen."
+        )
     ],
 
     "Ba-Cl": [
-        {
-            formula: "BaCl₂",
-            names: {
-                stock: "Cloruro de bario",
-                iupac: "Dicloruro de bario",
-                clasica: "Cloruro bárico"
-            },
-            type: "Sal",
-            description: "Sal formada por bario y cloro."
-        }
+        producto(
+            "BaCl₂",
+            "Cloruro de bario",
+            "Dicloruro de bario",
+            "Cloruro bárico",
+            "Barium chloride",
+            "Barium dichloride",
+            "Barium chloride",
+            "Sal",
+            "Salt",
+            "Sal formada por bario y cloro.",
+            "Salt formed by barium and chlorine."
+        )
     ],
 
     "Ba-O": [
-        {
-            formula: "BaO",
-            names: {
-                stock: "Óxido de bario",
-                iupac: "Monóxido de bario",
-                clasica: "Óxido bárico"
-            },
-            type: "Óxido",
-            description: "Óxido formado por bario y oxígeno."
-        }
+        producto(
+            "BaO",
+            "Óxido de bario",
+            "Monóxido de bario",
+            "Óxido bárico",
+            "Barium oxide",
+            "Barium monoxide",
+            "Barium oxide",
+            "Óxido",
+            "Oxide",
+            "Óxido formado por bario y oxígeno.",
+            "Oxide formed by barium and oxygen."
+        )
     ],
 
     "Cl-Sr": [
-        {
-            formula: "SrCl₂",
-            names: {
-                stock: "Cloruro de estroncio",
-                iupac: "Dicloruro de estroncio",
-                clasica: "Cloruro estróncico"
-            },
-            type: "Sal",
-            description: "Sal formada por estroncio y cloro."
-        }
+        producto(
+            "SrCl₂",
+            "Cloruro de estroncio",
+            "Dicloruro de estroncio",
+            "Cloruro estróncico",
+            "Strontium chloride",
+            "Strontium dichloride",
+            "Strontium chloride",
+            "Sal",
+            "Salt",
+            "Sal formada por estroncio y cloro.",
+            "Salt formed by strontium and chlorine."
+        )
     ],
 
     "Sr-O": [
-        {
-            formula: "SrO",
-            names: {
-                stock: "Óxido de estroncio",
-                iupac: "Monóxido de estroncio",
-                clasica: "Óxido estróncico"
-            },
-            type: "Óxido",
-            description: "Óxido formado por estroncio y oxígeno."
-        }
+        producto(
+            "SrO",
+            "Óxido de estroncio",
+            "Monóxido de estroncio",
+            "Óxido estróncico",
+            "Strontium oxide",
+            "Strontium monoxide",
+            "Strontium oxide",
+            "Óxido",
+            "Oxide",
+            "Óxido formado por estroncio y oxígeno.",
+            "Oxide formed by strontium and oxygen."
+        )
     ],
 
 
@@ -403,39 +533,49 @@ const combinations = {
     ===================================================== */
 
     "Cl-N": [
-        {
-            formula: "NCl₃",
-            names: {
-                stock: "Cloruro de nitrógeno(III)",
-                iupac: "Tricloruro de nitrógeno",
-                clasica: "Cloruro de nitrógeno"
-            },
-            type: "Haluros",
-            description: "Compuesto formado por nitrógeno y cloro."
-        }
+        producto(
+            "NCl₃",
+            "Cloruro de nitrógeno(III)",
+            "Tricloruro de nitrógeno",
+            "Cloruro de nitrógeno",
+            "Nitrogen(III) chloride",
+            "Nitrogen trichloride",
+            "Nitrogen chloride",
+            "Haluros",
+            "Halides",
+            "Compuesto formado por nitrógeno y cloro.",
+            "Compound formed by nitrogen and chlorine."
+        )
     ],
 
     "N-O": [
-        {
-            formula: "NO",
-            names: {
-                stock: "Óxido de nitrógeno(II)",
-                iupac: "Monóxido de nitrógeno",
-                clasica: "Óxido nítrico"
-            },
-            type: "Óxido",
-            description: "Óxido de nitrógeno."
-        },
-        {
-            formula: "NO₂",
-            names: {
-                stock: "Óxido de nitrógeno(IV)",
-                iupac: "Dióxido de nitrógeno",
-                clasica: "Dióxido de nitrógeno"
-            },
-            type: "Óxido",
-            description: "Óxido de nitrógeno."
-        }
+        producto(
+            "NO",
+            "Óxido de nitrógeno(II)",
+            "Monóxido de nitrógeno",
+            "Óxido nítrico",
+            "Nitrogen(II) oxide",
+            "Nitrogen monoxide",
+            "Nitric oxide",
+            "Óxido",
+            "Oxide",
+            "Óxido de nitrógeno.",
+            "Nitrogen oxide."
+        ),
+
+        producto(
+            "NO₂",
+            "Óxido de nitrógeno(IV)",
+            "Dióxido de nitrógeno",
+            "Dióxido de nitrógeno",
+            "Nitrogen(IV) oxide",
+            "Nitrogen dioxide",
+            "Nitrogen dioxide",
+            "Óxido",
+            "Oxide",
+            "Óxido de nitrógeno.",
+            "Nitrogen oxide."
+        )
     ],
 
 
@@ -444,39 +584,49 @@ const combinations = {
     ===================================================== */
 
     "Cl-S": [
-        {
-            formula: "S₂Cl₂",
-            names: {
-                stock: "Cloruro de azufre(I)",
-                iupac: "Dicloruro de diazufre",
-                clasica: "Cloruro de azufre"
-            },
-            type: "Haluros",
-            description: "Compuesto formado por azufre y cloro."
-        }
+        producto(
+            "S₂Cl₂",
+            "Cloruro de azufre(I)",
+            "Dicloruro de diazufre",
+            "Cloruro de azufre",
+            "Sulfur(I) chloride",
+            "Disulfur dichloride",
+            "Sulfur chloride",
+            "Haluros",
+            "Halides",
+            "Compuesto formado por azufre y cloro.",
+            "Compound formed by sulfur and chlorine."
+        )
     ],
 
     "O-S": [
-        {
-            formula: "SO₂",
-            names: {
-                stock: "Óxido de azufre(IV)",
-                iupac: "Dióxido de azufre",
-                clasica: "Anhídrido sulfuroso"
-            },
-            type: "Óxido",
-            description: "Óxido de azufre."
-        },
-        {
-            formula: "SO₃",
-            names: {
-                stock: "Óxido de azufre(VI)",
-                iupac: "Trióxido de azufre",
-                clasica: "Anhídrido sulfúrico"
-            },
-            type: "Óxido",
-            description: "Óxido de azufre."
-        }
+        producto(
+            "SO₂",
+            "Óxido de azufre(IV)",
+            "Dióxido de azufre",
+            "Anhídrido sulfuroso",
+            "Sulfur(IV) oxide",
+            "Sulfur dioxide",
+            "Sulfurous anhydride",
+            "Óxido",
+            "Oxide",
+            "Óxido de azufre.",
+            "Sulfur oxide."
+        ),
+
+        producto(
+            "SO₃",
+            "Óxido de azufre(VI)",
+            "Trióxido de azufre",
+            "Anhídrido sulfúrico",
+            "Sulfur(VI) oxide",
+            "Sulfur trioxide",
+            "Sulfuric anhydride",
+            "Óxido",
+            "Oxide",
+            "Óxido de azufre.",
+            "Sulfur oxide."
+        )
     ],
 
 
@@ -485,49 +635,63 @@ const combinations = {
     ===================================================== */
 
     "Cl-P": [
-        {
-            formula: "PCl₃",
-            names: {
-                stock: "Cloruro de fósforo(III)",
-                iupac: "Tricloruro de fósforo",
-                clasica: "Cloruro fosforoso"
-            },
-            type: "Haluros",
-            description: "Compuesto formado por fósforo y cloro."
-        },
-        {
-            formula: "PCl₅",
-            names: {
-                stock: "Cloruro de fósforo(V)",
-                iupac: "Pentacloruro de fósforo",
-                clasica: "Cloruro fosfórico"
-            },
-            type: "Haluros",
-            description: "Compuesto formado por fósforo y cloro."
-        }
+        producto(
+            "PCl₃",
+            "Cloruro de fósforo(III)",
+            "Tricloruro de fósforo",
+            "Cloruro fosforoso",
+            "Phosphorus(III) chloride",
+            "Phosphorus trichloride",
+            "Phosphorous chloride",
+            "Haluros",
+            "Halides",
+            "Compuesto formado por fósforo y cloro.",
+            "Compound formed by phosphorus and chlorine."
+        ),
+
+        producto(
+            "PCl₅",
+            "Cloruro de fósforo(V)",
+            "Pentacloruro de fósforo",
+            "Cloruro fosfórico",
+            "Phosphorus(V) chloride",
+            "Phosphorus pentachloride",
+            "Phosphoric chloride",
+            "Haluros",
+            "Halides",
+            "Compuesto formado por fósforo y cloro.",
+            "Compound formed by phosphorus and chlorine."
+        )
     ],
 
     "O-P": [
-        {
-            formula: "P₄O₆",
-            names: {
-                stock: "Óxido de fósforo(III)",
-                iupac: "Hexaóxido de tetrafósforo",
-                clasica: "Anhídrido fosforoso"
-            },
-            type: "Óxido",
-            description: "Óxido molecular del fósforo."
-        },
-        {
-            formula: "P₄O₁₀",
-            names: {
-                stock: "Óxido de fósforo(V)",
-                iupac: "Decaóxido de tetrafósforo",
-                clasica: "Anhídrido fosfórico"
-            },
-            type: "Óxido",
-            description: "Óxido molecular del fósforo."
-        }
+        producto(
+            "P₄O₆",
+            "Óxido de fósforo(III)",
+            "Hexaóxido de tetrafósforo",
+            "Anhídrido fosforoso",
+            "Phosphorus(III) oxide",
+            "Tetraphosphorus hexoxide",
+            "Phosphorous anhydride",
+            "Óxido",
+            "Oxide",
+            "Óxido molecular del fósforo.",
+            "Molecular oxide of phosphorus."
+        ),
+
+        producto(
+            "P₄O₁₀",
+            "Óxido de fósforo(V)",
+            "Decaóxido de tetrafósforo",
+            "Anhídrido fosfórico",
+            "Phosphorus(V) oxide",
+            "Tetraphosphorus decoxide",
+            "Phosphoric anhydride",
+            "Óxido",
+            "Oxide",
+            "Óxido molecular del fósforo.",
+            "Molecular oxide of phosphorus."
+        )
     ],
 
 
@@ -536,42 +700,51 @@ const combinations = {
     ===================================================== */
 
     "Cl-Si": [
-        {
-            formula: "SiCl₄",
-            names: {
-                stock: "Cloruro de silicio(IV)",
-                iupac: "Tetracloruro de silicio",
-                clasica: "Cloruro silícico"
-            },
-            type: "Haluros",
-            description: "Compuesto formado por silicio y cloro."
-        }
+        producto(
+            "SiCl₄",
+            "Cloruro de silicio(IV)",
+            "Tetracloruro de silicio",
+            "Cloruro silícico",
+            "Silicon(IV) chloride",
+            "Silicon tetrachloride",
+            "Silicon chloride",
+            "Haluros",
+            "Halides",
+            "Compuesto formado por silicio y cloro.",
+            "Compound formed by silicon and chlorine."
+        )
     ],
 
     "H-Si": [
-        {
-            formula: "SiH₄",
-            names: {
-                stock: "Hidruro de silicio(IV)",
-                iupac: "Silano",
-                clasica: "Silano"
-            },
-            type: "Hidruro",
-            description: "Hidruro de silicio."
-        }
+        producto(
+            "SiH₄",
+            "Hidruro de silicio(IV)",
+            "Silano",
+            "Silano",
+            "Silicon(IV) hydride",
+            "Silane",
+            "Silane",
+            "Hidruro",
+            "Hydride",
+            "Hidruro de silicio.",
+            "Silicon hydride."
+        )
     ],
 
     "O-Si": [
-        {
-            formula: "SiO₂",
-            names: {
-                stock: "Óxido de silicio(IV)",
-                iupac: "Dióxido de silicio",
-                clasica: "Anhídrido silícico"
-            },
-            type: "Óxido",
-            description: "Componente principal del cuarzo."
-        }
+        producto(
+            "SiO₂",
+            "Óxido de silicio(IV)",
+            "Dióxido de silicio",
+            "Anhídrido silícico",
+            "Silicon(IV) oxide",
+            "Silicon dioxide",
+            "Silicic anhydride",
+            "Óxido",
+            "Oxide",
+            "Componente principal del cuarzo.",
+            "Main component of quartz."
+        )
     ],
 
 
@@ -580,29 +753,35 @@ const combinations = {
     ===================================================== */
 
     "B-Cl": [
-        {
-            formula: "BCl₃",
-            names: {
-                stock: "Cloruro de boro(III)",
-                iupac: "Tricloruro de boro",
-                clasica: "Cloruro bórico"
-            },
-            type: "Haluros",
-            description: "Compuesto formado por boro y cloro."
-        }
+        producto(
+            "BCl₃",
+            "Cloruro de boro(III)",
+            "Tricloruro de boro",
+            "Cloruro bórico",
+            "Boron(III) chloride",
+            "Boron trichloride",
+            "Boric chloride",
+            "Haluros",
+            "Halides",
+            "Compuesto formado por boro y cloro.",
+            "Compound formed by boron and chlorine."
+        )
     ],
 
     "B-O": [
-        {
-            formula: "B₂O₃",
-            names: {
-                stock: "Óxido de boro(III)",
-                iupac: "Trióxido de diboro",
-                clasica: "Anhídrido bórico"
-            },
-            type: "Óxido",
-            description: "Óxido formado por boro y oxígeno."
-        }
+        producto(
+            "B₂O₃",
+            "Óxido de boro(III)",
+            "Trióxido de diboro",
+            "Anhídrido bórico",
+            "Boron(III) oxide",
+            "Diboron trioxide",
+            "Boric anhydride",
+            "Óxido",
+            "Oxide",
+            "Óxido formado por boro y oxígeno.",
+            "Oxide formed by boron and oxygen."
+        )
     ],
 
 
@@ -611,29 +790,35 @@ const combinations = {
     ===================================================== */
 
     "Al-Cl": [
-        {
-            formula: "AlCl₃",
-            names: {
-                stock: "Cloruro de aluminio",
-                iupac: "Tricloruro de aluminio",
-                clasica: "Cloruro alumínico"
-            },
-            type: "Sal",
-            description: "Compuesto formado por aluminio y cloro."
-        }
+        producto(
+            "AlCl₃",
+            "Cloruro de aluminio",
+            "Tricloruro de aluminio",
+            "Cloruro alumínico",
+            "Aluminum chloride",
+            "Aluminum trichloride",
+            "Aluminum chloride",
+            "Sal",
+            "Salt",
+            "Compuesto formado por aluminio y cloro.",
+            "Compound formed by aluminum and chlorine."
+        )
     ],
 
     "Al-O": [
-        {
-            formula: "Al₂O₃",
-            names: {
-                stock: "Óxido de aluminio",
-                iupac: "Trióxido de dialuminio",
-                clasica: "Óxido alumínico"
-            },
-            type: "Óxido",
-            description: "Óxido común del aluminio."
-        }
+        producto(
+            "Al₂O₃",
+            "Óxido de aluminio",
+            "Trióxido de dialuminio",
+            "Óxido alumínico",
+            "Aluminum oxide",
+            "Dialuminum trioxide",
+            "Aluminum oxide",
+            "Óxido",
+            "Oxide",
+            "Óxido común del aluminio.",
+            "Common oxide of aluminum."
+        )
     ],
 
 
@@ -642,59 +827,77 @@ const combinations = {
     ===================================================== */
 
     "Cl-Fe": [
-        {
-            formula: "FeCl₂",
-            names: {
-                stock: "Cloruro de hierro(II)",
-                iupac: "Dicloruro de hierro",
-                clasica: "Cloruro ferroso"
-            },
-            type: "Sal",
-            description: "Cloruro de hierro con estado de oxidación +2."
-        },
-        {
-            formula: "FeCl₃",
-            names: {
-                stock: "Cloruro de hierro(III)",
-                iupac: "Tricloruro de hierro",
-                clasica: "Cloruro férrico"
-            },
-            type: "Sal",
-            description: "Cloruro de hierro con estado de oxidación +3."
-        }
+        producto(
+            "FeCl₂",
+            "Cloruro de hierro(II)",
+            "Dicloruro de hierro",
+            "Cloruro ferroso",
+            "Iron(II) chloride",
+            "Iron dichloride",
+            "Ferrous chloride",
+            "Sal",
+            "Salt",
+            "Cloruro de hierro con estado de oxidación +2.",
+            "Iron chloride with oxidation state +2."
+        ),
+
+        producto(
+            "FeCl₃",
+            "Cloruro de hierro(III)",
+            "Tricloruro de hierro",
+            "Cloruro férrico",
+            "Iron(III) chloride",
+            "Iron trichloride",
+            "Ferric chloride",
+            "Sal",
+            "Salt",
+            "Cloruro de hierro con estado de oxidación +3.",
+            "Iron chloride with oxidation state +3."
+        )
     ],
 
     "Fe-O": [
-        {
-            formula: "FeO",
-            names: {
-                stock: "Óxido de hierro(II)",
-                iupac: "Monóxido de hierro",
-                clasica: "Óxido ferroso"
-            },
-            type: "Óxido",
-            description: "Óxido de hierro con estado de oxidación +2."
-        },
-        {
-            formula: "Fe₂O₃",
-            names: {
-                stock: "Óxido de hierro(III)",
-                iupac: "Trióxido de dihierro",
-                clasica: "Óxido férrico"
-            },
-            type: "Óxido",
-            description: "Óxido de hierro con estado de oxidación +3."
-        },
-        {
-            formula: "Fe₃O₄",
-            names: {
-                stock: "Óxido de hierro(II,III)",
-                iupac: "Tetraóxido de trihierro",
-                clasica: "Óxido ferroso-férrico"
-            },
-            type: "Óxido",
-            description: "Óxido mixto de hierro."
-        }
+        producto(
+            "FeO",
+            "Óxido de hierro(II)",
+            "Monóxido de hierro",
+            "Óxido ferroso",
+            "Iron(II) oxide",
+            "Iron monoxide",
+            "Ferrous oxide",
+            "Óxido",
+            "Oxide",
+            "Óxido de hierro con estado de oxidación +2.",
+            "Iron oxide with oxidation state +2."
+        ),
+
+        producto(
+            "Fe₂O₃",
+            "Óxido de hierro(III)",
+            "Trióxido de dihierro",
+            "Óxido férrico",
+            "Iron(III) oxide",
+            "Diiron trioxide",
+            "Ferric oxide",
+            "Óxido",
+            "Oxide",
+            "Óxido de hierro con estado de oxidación +3.",
+            "Iron oxide with oxidation state +3."
+        ),
+
+        producto(
+            "Fe₃O₄",
+            "Óxido de hierro(II,III)",
+            "Tetraóxido de trihierro",
+            "Óxido ferroso-férrico",
+            "Iron(II,III) oxide",
+            "Triiron tetroxide",
+            "Ferrous-ferric oxide",
+            "Óxido",
+            "Oxide",
+            "Óxido mixto de hierro.",
+            "Mixed iron oxide."
+        )
     ],
 
 
@@ -703,49 +906,63 @@ const combinations = {
     ===================================================== */
 
     "Cl-Cu": [
-        {
-            formula: "CuCl",
-            names: {
-                stock: "Cloruro de cobre(I)",
-                iupac: "Cloruro de cobre",
-                clasica: "Cloruro cuproso"
-            },
-            type: "Sal",
-            description: "Cloruro de cobre con estado de oxidación +1."
-        },
-        {
-            formula: "CuCl₂",
-            names: {
-                stock: "Cloruro de cobre(II)",
-                iupac: "Dicloruro de cobre",
-                clasica: "Cloruro cúprico"
-            },
-            type: "Sal",
-            description: "Cloruro de cobre con estado de oxidación +2."
-        }
+        producto(
+            "CuCl",
+            "Cloruro de cobre(I)",
+            "Cloruro de cobre",
+            "Cloruro cuproso",
+            "Copper(I) chloride",
+            "Copper chloride",
+            "Cuprous chloride",
+            "Sal",
+            "Salt",
+            "Cloruro de cobre con estado de oxidación +1.",
+            "Copper chloride with oxidation state +1."
+        ),
+
+        producto(
+            "CuCl₂",
+            "Cloruro de cobre(II)",
+            "Dicloruro de cobre",
+            "Cloruro cúprico",
+            "Copper(II) chloride",
+            "Copper dichloride",
+            "Cupric chloride",
+            "Sal",
+            "Salt",
+            "Cloruro de cobre con estado de oxidación +2.",
+            "Copper chloride with oxidation state +2."
+        )
     ],
 
     "Cu-O": [
-        {
-            formula: "Cu₂O",
-            names: {
-                stock: "Óxido de cobre(I)",
-                iupac: "Monóxido de dicobre",
-                clasica: "Óxido cuproso"
-            },
-            type: "Óxido",
-            description: "Óxido de cobre con estado de oxidación +1."
-        },
-        {
-            formula: "CuO",
-            names: {
-                stock: "Óxido de cobre(II)",
-                iupac: "Monóxido de cobre",
-                clasica: "Óxido cúprico"
-            },
-            type: "Óxido",
-            description: "Óxido de cobre con estado de oxidación +2."
-        }
+        producto(
+            "Cu₂O",
+            "Óxido de cobre(I)",
+            "Monóxido de dicobre",
+            "Óxido cuproso",
+            "Copper(I) oxide",
+            "Dicopper monoxide",
+            "Cuprous oxide",
+            "Óxido",
+            "Oxide",
+            "Óxido de cobre con estado de oxidación +1.",
+            "Copper oxide with oxidation state +1."
+        ),
+
+        producto(
+            "CuO",
+            "Óxido de cobre(II)",
+            "Monóxido de cobre",
+            "Óxido cúprico",
+            "Copper(II) oxide",
+            "Copper monoxide",
+            "Cupric oxide",
+            "Óxido",
+            "Oxide",
+            "Óxido de cobre con estado de oxidación +2.",
+            "Copper oxide with oxidation state +2."
+        )
     ],
 
 
@@ -754,29 +971,35 @@ const combinations = {
     ===================================================== */
 
     "Cl-Zn": [
-        {
-            formula: "ZnCl₂",
-            names: {
-                stock: "Cloruro de zinc",
-                iupac: "Dicloruro de zinc",
-                clasica: "Cloruro de zinc"
-            },
-            type: "Sal",
-            description: "Sal formada por zinc y cloro."
-        }
+        producto(
+            "ZnCl₂",
+            "Cloruro de zinc",
+            "Dicloruro de zinc",
+            "Cloruro de zinc",
+            "Zinc chloride",
+            "Zinc dichloride",
+            "Zinc chloride",
+            "Sal",
+            "Salt",
+            "Sal formada por zinc y cloro.",
+            "Salt formed by zinc and chlorine."
+        )
     ],
 
     "O-Zn": [
-        {
-            formula: "ZnO",
-            names: {
-                stock: "Óxido de zinc",
-                iupac: "Monóxido de zinc",
-                clasica: "Óxido de zinc"
-            },
-            type: "Óxido",
-            description: "Óxido formado por zinc y oxígeno."
-        }
+        producto(
+            "ZnO",
+            "Óxido de zinc",
+            "Monóxido de zinc",
+            "Óxido de zinc",
+            "Zinc oxide",
+            "Zinc monoxide",
+            "Zinc oxide",
+            "Óxido",
+            "Oxide",
+            "Óxido formado por zinc y oxígeno.",
+            "Oxide formed by zinc and oxygen."
+        )
     ],
 
 
@@ -785,29 +1008,35 @@ const combinations = {
     ===================================================== */
 
     "Ag-Cl": [
-        {
-            formula: "AgCl",
-            names: {
-                stock: "Cloruro de plata",
-                iupac: "Cloruro de plata",
-                clasica: "Cloruro argéntico"
-            },
-            type: "Sal",
-            description: "Sal de plata y cloro."
-        }
+        producto(
+            "AgCl",
+            "Cloruro de plata",
+            "Cloruro de plata",
+            "Cloruro argéntico",
+            "Silver chloride",
+            "Silver chloride",
+            "Silver chloride",
+            "Sal",
+            "Salt",
+            "Sal de plata y cloro.",
+            "Silver and chlorine salt."
+        )
     ],
 
     "Ag-O": [
-        {
-            formula: "Ag₂O",
-            names: {
-                stock: "Óxido de plata(I)",
-                iupac: "Monóxido de diplata",
-                clasica: "Óxido de plata"
-            },
-            type: "Óxido",
-            description: "Óxido de plata."
-        }
+        producto(
+            "Ag₂O",
+            "Óxido de plata(I)",
+            "Monóxido de diplata",
+            "Óxido de plata",
+            "Silver(I) oxide",
+            "Disilver monoxide",
+            "Silver oxide",
+            "Óxido",
+            "Oxide",
+            "Óxido de plata.",
+            "Silver oxide."
+        )
     ],
 
 
@@ -816,16 +1045,19 @@ const combinations = {
     ===================================================== */
 
     "Cl-Hg": [
-        {
-            formula: "HgCl₂",
-            names: {
-                stock: "Cloruro de mercurio(II)",
-                iupac: "Dicloruro de mercurio",
-                clasica: "Cloruro mercúrico"
-            },
-            type: "Sal",
-            description: "Compuesto de mercurio y cloro."
-        }
+        producto(
+            "HgCl₂",
+            "Cloruro de mercurio(II)",
+            "Dicloruro de mercurio",
+            "Cloruro mercúrico",
+            "Mercury(II) chloride",
+            "Mercury dichloride",
+            "Mercuric chloride",
+            "Sal",
+            "Salt",
+            "Compuesto de mercurio y cloro.",
+            "Compound of mercury and chlorine."
+        )
     ],
 
 
@@ -834,16 +1066,19 @@ const combinations = {
     ===================================================== */
 
     "Au-Cl": [
-        {
-            formula: "AuCl₃",
-            names: {
-                stock: "Cloruro de oro(III)",
-                iupac: "Tricloruro de oro",
-                clasica: "Cloruro áurico"
-            },
-            type: "Haluros",
-            description: "Compuesto de oro y cloro."
-        }
+        producto(
+            "AuCl₃",
+            "Cloruro de oro(III)",
+            "Tricloruro de oro",
+            "Cloruro áurico",
+            "Gold(III) chloride",
+            "Gold trichloride",
+            "Auric chloride",
+            "Haluros",
+            "Halides",
+            "Compuesto de oro y cloro.",
+            "Compound of gold and chlorine."
+        )
     ],
 
 
@@ -852,26 +1087,33 @@ const combinations = {
     ===================================================== */
 
     "O-Sn": [
-        {
-            formula: "SnO",
-            names: {
-                stock: "Óxido de estaño(II)",
-                iupac: "Monóxido de estaño",
-                clasica: "Óxido estañoso"
-            },
-            type: "Óxido",
-            description: "Óxido de estaño."
-        },
-        {
-            formula: "SnO₂",
-            names: {
-                stock: "Óxido de estaño(IV)",
-                iupac: "Dióxido de estaño",
-                clasica: "Óxido estánnico"
-            },
-            type: "Óxido",
-            description: "Óxido de estaño."
-        }
+        producto(
+            "SnO",
+            "Óxido de estaño(II)",
+            "Monóxido de estaño",
+            "Óxido estañoso",
+            "Tin(II) oxide",
+            "Tin monoxide",
+            "Stannous oxide",
+            "Óxido",
+            "Oxide",
+            "Óxido de estaño.",
+            "Tin oxide."
+        ),
+
+        producto(
+            "SnO₂",
+            "Óxido de estaño(IV)",
+            "Dióxido de estaño",
+            "Óxido estánnico",
+            "Tin(IV) oxide",
+            "Tin dioxide",
+            "Stannic oxide",
+            "Óxido",
+            "Oxide",
+            "Óxido de estaño.",
+            "Tin oxide."
+        )
     ],
 
 
@@ -880,39 +1122,49 @@ const combinations = {
     ===================================================== */
 
     "Cl-Pb": [
-        {
-            formula: "PbCl₂",
-            names: {
-                stock: "Cloruro de plomo(II)",
-                iupac: "Dicloruro de plomo",
-                clasica: "Cloruro plumboso"
-            },
-            type: "Sal",
-            description: "Sal formada por plomo y cloro."
-        }
+        producto(
+            "PbCl₂",
+            "Cloruro de plomo(II)",
+            "Dicloruro de plomo",
+            "Cloruro plumboso",
+            "Lead(II) chloride",
+            "Lead dichloride",
+            "Plumbous chloride",
+            "Sal",
+            "Salt",
+            "Sal formada por plomo y cloro.",
+            "Salt formed by lead and chlorine."
+        )
     ],
 
     "O-Pb": [
-        {
-            formula: "PbO",
-            names: {
-                stock: "Óxido de plomo(II)",
-                iupac: "Monóxido de plomo",
-                clasica: "Óxido plumboso"
-            },
-            type: "Óxido",
-            description: "Óxido de plomo."
-        },
-        {
-            formula: "PbO₂",
-            names: {
-                stock: "Óxido de plomo(IV)",
-                iupac: "Dióxido de plomo",
-                clasica: "Óxido plúmbico"
-            },
-            type: "Óxido",
-            description: "Óxido de plomo."
-        }
+        producto(
+            "PbO",
+            "Óxido de plomo(II)",
+            "Monóxido de plomo",
+            "Óxido plumboso",
+            "Lead(II) oxide",
+            "Lead monoxide",
+            "Plumbous oxide",
+            "Óxido",
+            "Oxide",
+            "Óxido de plomo.",
+            "Lead oxide."
+        ),
+
+        producto(
+            "PbO₂",
+            "Óxido de plomo(IV)",
+            "Dióxido de plomo",
+            "Óxido plúmbico",
+            "Lead(IV) oxide",
+            "Lead dioxide",
+            "Plumbic oxide",
+            "Óxido",
+            "Oxide",
+            "Óxido de plomo.",
+            "Lead oxide."
+        )
     ],
 
 
@@ -921,16 +1173,19 @@ const combinations = {
     ===================================================== */
 
     "Br-O": [
-        {
-            formula: "Br₂O",
-            names: {
-                stock: "Óxido de bromo(I)",
-                iupac: "Monóxido de dibromo",
-                clasica: "Anhídrido hipobromoso"
-            },
-            type: "Óxido",
-            description: "Óxido de bromo."
-        }
+        producto(
+            "Br₂O",
+            "Óxido de bromo(I)",
+            "Monóxido de dibromo",
+            "Anhídrido hipobromoso",
+            "Bromine(I) oxide",
+            "Dibromine monoxide",
+            "Hypobromous anhydride",
+            "Óxido",
+            "Oxide",
+            "Óxido de bromo.",
+            "Bromine oxide."
+        )
     ],
 
 
@@ -939,16 +1194,19 @@ const combinations = {
     ===================================================== */
 
     "Cl-O": [
-        {
-            formula: "Cl₂O",
-            names: {
-                stock: "Óxido de cloro(I)",
-                iupac: "Monóxido de dicloro",
-                clasica: "Anhídrido hipocloroso"
-            },
-            type: "Óxido",
-            description: "Óxido de cloro."
-        }
+        producto(
+            "Cl₂O",
+            "Óxido de cloro(I)",
+            "Monóxido de dicloro",
+            "Anhídrido hipocloroso",
+            "Chlorine(I) oxide",
+            "Dichlorine monoxide",
+            "Hypochlorous anhydride",
+            "Óxido",
+            "Oxide",
+            "Óxido de cloro.",
+            "Chlorine oxide."
+        )
     ]
 
 };
