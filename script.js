@@ -12,7 +12,6 @@ const elementos = [
 
     { numero:1, simbolo:"H", nombre:"Hidrógeno", periodo:1, grupo:1, categoria:"no-metal" },
     { numero:2, simbolo:"He", nombre:"Helio", periodo:1, grupo:18, categoria:"gas-noble" },
-
     { numero:3, simbolo:"Li", nombre:"Litio", periodo:2, grupo:1, categoria:"alcalino" },
     { numero:4, simbolo:"Be", nombre:"Berilio", periodo:2, grupo:2, categoria:"alcalinoterreo" },
     { numero:5, simbolo:"B", nombre:"Boro", periodo:2, grupo:13, categoria:"metaloide" },
@@ -143,69 +142,243 @@ const elementos = [
 
 
 /* =========================================================
-   ESTADO
+   VARIABLES
 ========================================================= */
 
-const seleccionados = [
-    null,
-    null
-];
+let seleccionados = [null, null];
 
 let siguientePosicion = 0;
 
 let nomenclaturaActual = "stock";
 
+let idiomaActual =
+    localStorage.getItem("chemix-language") || "es";
 
-/* =========================================================
-   ELEMENTOS HTML
-========================================================= */
 
 const tabla =
-    document.getElementById(
-        "periodic-table"
-    );
+    document.getElementById("periodic-table");
 
 const slots =
-    document.querySelectorAll(
-        ".element-slot"
-    );
-
-const botonCombinar =
-    document.getElementById(
-        "combine-button"
-    );
+    document.querySelectorAll(".element-slot");
 
 const resultado =
-    document.getElementById(
-        "result"
-    );
+    document.getElementById("result");
 
-const selectorNomenclatura =
-    document.getElementById(
-        "nomenclature-select"
-    );
+const botonCombinar =
+    document.getElementById("combine-button");
 
 
 /* =========================================================
-   SELECTOR DE NOMENCLATURA
+   NOMBRES DE ELEMENTOS
 ========================================================= */
 
-if (selectorNomenclatura) {
+const nombresElementosEN = {
 
-    selectorNomenclatura.value =
-        nomenclaturaActual;
+    1:"Hydrogen",
+    2:"Helium",
+    3:"Lithium",
+    4:"Beryllium",
+    5:"Boron",
+    6:"Carbon",
+    7:"Nitrogen",
+    8:"Oxygen",
+    9:"Fluorine",
+    10:"Neon",
 
-    selectorNomenclatura.addEventListener(
-        "change",
-        evento => {
+    11:"Sodium",
+    12:"Magnesium",
+    13:"Aluminium",
+    14:"Silicon",
+    15:"Phosphorus",
+    16:"Sulfur",
+    17:"Chlorine",
+    18:"Argon",
 
-            nomenclaturaActual =
-                evento.target.value;
+    19:"Potassium",
+    20:"Calcium",
+    21:"Scandium",
+    22:"Titanium",
+    23:"Vanadium",
+    24:"Chromium",
+    25:"Manganese",
+    26:"Iron",
+    27:"Cobalt",
+    28:"Nickel",
+    29:"Copper",
+    30:"Zinc",
 
-            actualizarNombresProductos();
+    31:"Gallium",
+    32:"Germanium",
+    33:"Arsenic",
+    34:"Selenium",
+    35:"Bromine",
+    36:"Krypton",
 
-        }
-    );
+    37:"Rubidium",
+    38:"Strontium",
+    39:"Yttrium",
+    40:"Zirconium",
+    41:"Niobium",
+    42:"Molybdenum",
+    43:"Technetium",
+    44:"Ruthenium",
+    45:"Rhodium",
+    46:"Palladium",
+    47:"Silver",
+    48:"Cadmium",
+    49:"Indium",
+    50:"Tin",
+    51:"Antimony",
+    52:"Tellurium",
+    53:"Iodine",
+    54:"Xenon",
+
+    55:"Caesium",
+    56:"Barium",
+    57:"Lanthanum",
+    58:"Cerium",
+    59:"Praseodymium",
+    60:"Neodymium",
+    61:"Promethium",
+    62:"Samarium",
+    63:"Europium",
+    64:"Gadolinium",
+    65:"Terbium",
+    66:"Dysprosium",
+    67:"Holmium",
+    68:"Erbium",
+    69:"Thulium",
+    70:"Ytterbium",
+    71:"Lutetium",
+
+    72:"Hafnium",
+    73:"Tantalum",
+    74:"Tungsten",
+    75:"Rhenium",
+    76:"Osmium",
+    77:"Iridium",
+    78:"Platinum",
+    79:"Gold",
+    80:"Mercury",
+    81:"Thallium",
+    82:"Lead",
+    83:"Bismuth",
+    84:"Polonium",
+    85:"Astatine",
+    86:"Radon",
+
+    87:"Francium",
+    88:"Radium",
+    89:"Actinium",
+    90:"Thorium",
+    91:"Protactinium",
+    92:"Uranium",
+    93:"Neptunium",
+    94:"Plutonium",
+    95:"Americium",
+    96:"Curium",
+    97:"Berkelium",
+    98:"Californium",
+    99:"Einsteinium",
+    100:"Fermium",
+    101:"Mendelevium",
+    102:"Nobelium",
+    103:"Lawrencium",
+
+    104:"Rutherfordium",
+    105:"Dubnium",
+    106:"Seaborgium",
+    107:"Bohrium",
+    108:"Hassium",
+    109:"Meitnerium",
+    110:"Darmstadtium",
+    111:"Roentgenium",
+    112:"Copernicium",
+    113:"Nihonium",
+    114:"Flerovium",
+    115:"Moscovium",
+    116:"Livermorium",
+    117:"Tennessine",
+    118:"Oganesson"
+
+};
+
+
+/* =========================================================
+   TEXTOS DE RESULTADOS
+========================================================= */
+
+const textosResultado = {
+
+    es: {
+
+        faltanTitulo:
+            "Faltan elementos",
+
+        faltanDescripcion:
+            "Coloca dos elementos en el laboratorio.",
+
+        sinCombinacionTitulo:
+            "Sin combinación registrada",
+
+        sinCombinacionDescripcion:
+            "Chemix todavía no tiene esta combinación en su base de datos.",
+
+        resultadoSingular:
+            "resultado",
+
+        resultadoPlural:
+            "resultados",
+
+        sinNombre:
+            "Sin nombre registrado"
+
+    },
+
+    en: {
+
+        faltanTitulo:
+            "Elements missing",
+
+        faltanDescripcion:
+            "Place two elements in the laboratory.",
+
+        sinCombinacionTitulo:
+            "No registered combination",
+
+        sinCombinacionDescripcion:
+            "Chemix does not have this combination in its database yet.",
+
+        resultadoSingular:
+            "result",
+
+        resultadoPlural:
+            "results",
+
+        sinNombre:
+            "No registered name"
+
+    }
+
+};
+
+
+/* =========================================================
+   OBTENER NOMBRE DE ELEMENTO
+========================================================= */
+
+function obtenerNombreElemento(elemento) {
+
+    if (
+        idiomaActual === "en" &&
+        nombresElementosEN[elemento.numero]
+    ) {
+
+        return nombresElementosEN[elemento.numero];
+
+    }
+
+    return elemento.nombre;
 
 }
 
@@ -222,24 +395,27 @@ function crearTabla() {
         elemento => {
 
             const tarjeta =
-                document.createElement(
-                    "div"
-                );
+                document.createElement("div");
+
 
             tarjeta.className =
                 `element ${elemento.categoria}`;
 
+
+            tarjeta.draggable = true;
+
+
+            tarjeta.dataset.numero =
+                elemento.numero;
+
+
             tarjeta.style.gridColumn =
                 elemento.grupo;
+
 
             tarjeta.style.gridRow =
                 elemento.periodo;
 
-            tarjeta.draggable =
-                true;
-
-            tarjeta.dataset.numero =
-                elemento.numero;
 
             tarjeta.innerHTML = `
 
@@ -252,15 +428,11 @@ function crearTabla() {
                 </span>
 
                 <span class="name">
-                    ${elemento.nombre}
+                    ${obtenerNombreElemento(elemento)}
                 </span>
 
             `;
 
-
-            /* =================================================
-               CLICK / TOQUE
-            ================================================= */
 
             tarjeta.addEventListener(
                 "click",
@@ -273,10 +445,6 @@ function crearTabla() {
                 }
             );
 
-
-            /* =================================================
-               DRAG
-            ================================================= */
 
             tarjeta.addEventListener(
                 "dragstart",
@@ -330,6 +498,7 @@ function colocarElemento(elemento) {
 
     }
 
+
     actualizarSlots();
 
 }
@@ -347,6 +516,7 @@ function actualizarSlots() {
             const elemento =
                 seleccionados[index];
 
+
             if (!elemento) {
 
                 slot.className =
@@ -359,8 +529,10 @@ function actualizarSlots() {
 
             }
 
+
             slot.className =
                 `element-slot filled ${elemento.categoria}`;
+
 
             slot.innerHTML = `
 
@@ -373,7 +545,7 @@ function actualizarSlots() {
                 </span>
 
                 <span class="name">
-                    ${elemento.nombre}
+                    ${obtenerNombreElemento(elemento)}
                 </span>
 
             `;
@@ -427,6 +599,7 @@ slots.forEach(
                     "drag-over"
                 );
 
+
                 const numero =
                     Number(
                         evento.dataTransfer
@@ -438,9 +611,8 @@ slots.forEach(
 
                 const elemento =
                     elementos.find(
-                        function(item) {
-                            return item.numero === numero;
-                        }
+                        item =>
+                            item.numero === numero
                     );
 
 
@@ -452,20 +624,18 @@ slots.forEach(
                 seleccionados[index] =
                     elemento;
 
+
                 siguientePosicion =
                     index === 0
                         ? 1
                         : 0;
+
 
                 actualizarSlots();
 
             }
         );
 
-
-        /* =================================================
-           DOBLE CLIC = ELIMINAR
-        ================================================= */
 
         slot.addEventListener(
             "dblclick",
@@ -474,8 +644,10 @@ slots.forEach(
                 seleccionados[index] =
                     null;
 
+
                 siguientePosicion =
                     index;
+
 
                 actualizarSlots();
 
@@ -498,6 +670,7 @@ function obtenerClave(
     const clave1 =
         `${elemento1.simbolo}-${elemento2.simbolo}`;
 
+
     const clave2 =
         `${elemento2.simbolo}-${elemento1.simbolo}`;
 
@@ -518,14 +691,64 @@ function obtenerClave(
 
 
 /* =========================================================
-   OBTENER NOMBRE SEGÚN NOMENCLATURA
+   OBTENER NOMBRE SEGÚN IDIOMA Y NOMENCLATURA
 ========================================================= */
 
 function obtenerNombreProducto(producto) {
 
+    if (!producto) {
+
+        return textosResultado[
+            idiomaActual
+        ].sinNombre;
+
+    }
+
+
+    /*
+       Nuevo formato:
+
+       names: {
+           es: {
+               stock: "...",
+               iupac: "...",
+               clasica: "..."
+           },
+           en: {
+               stock: "...",
+               iupac: "...",
+               clasica: "..."
+           }
+       }
+    */
+
     if (
         producto.names &&
-        producto.names[nomenclaturaActual]
+        producto.names[idiomaActual] &&
+        producto.names[idiomaActual][
+            nomenclaturaActual
+        ]
+    ) {
+
+        return producto.names[
+            idiomaActual
+        ][
+            nomenclaturaActual
+        ];
+
+    }
+
+
+    /*
+       Compatibilidad con el formato
+       antiguo en español.
+    */
+
+    if (
+        producto.names &&
+        producto.names[
+            nomenclaturaActual
+        ]
     ) {
 
         return producto.names[
@@ -542,7 +765,65 @@ function obtenerNombreProducto(producto) {
     }
 
 
-    return "Sin nombre registrado";
+    return textosResultado[
+        idiomaActual
+    ].sinNombre;
+
+}
+
+
+/* =========================================================
+   OBTENER TIPO DEL PRODUCTO
+========================================================= */
+
+function obtenerTipoProducto(producto) {
+
+    if (!producto) {
+        return "";
+    }
+
+
+    if (
+        typeof producto.type === "object" &&
+        producto.type[idiomaActual]
+    ) {
+
+        return producto.type[
+            idiomaActual
+        ];
+
+    }
+
+
+    return producto.type || "";
+
+}
+
+
+/* =========================================================
+   OBTENER DESCRIPCIÓN DEL PRODUCTO
+========================================================= */
+
+function obtenerDescripcionProducto(producto) {
+
+    if (!producto) {
+        return "";
+    }
+
+
+    if (
+        typeof producto.description === "object" &&
+        producto.description[idiomaActual]
+    ) {
+
+        return producto.description[
+            idiomaActual
+        ];
+
+    }
+
+
+    return producto.description || "";
 
 }
 
@@ -593,10 +874,42 @@ function actualizarNombresProductos() {
                 );
 
 
+            const tipo =
+                productoHTML.querySelector(
+                    ".product-type"
+                );
+
+
+            const descripcion =
+                productoHTML.querySelector(
+                    ".product-description"
+                );
+
+
             if (nombre) {
 
                 nombre.textContent =
                     obtenerNombreProducto(
+                        producto
+                    );
+
+            }
+
+
+            if (tipo) {
+
+                tipo.textContent =
+                    obtenerTipoProducto(
+                        producto
+                    );
+
+            }
+
+
+            if (descripcion) {
+
+                descripcion.textContent =
+                    obtenerDescripcionProducto(
                         producto
                     );
 
@@ -609,6 +922,38 @@ function actualizarNombresProductos() {
 
 
 /* =========================================================
+   ACTUALIZAR IDIOMA
+========================================================= */
+
+window.actualizarIdiomaResultados =
+    function(language) {
+
+        idiomaActual =
+            language === "en"
+                ? "en"
+                : "es";
+
+
+        crearTabla();
+
+        actualizarSlots();
+
+        actualizarNombresProductos();
+
+
+        if (
+            window.productosActuales &&
+            window.productosActuales.length
+        ) {
+
+            combinar();
+
+        }
+
+    };
+
+
+/* =========================================================
    COMBINAR
 ========================================================= */
 
@@ -617,8 +962,15 @@ function combinar() {
     const elemento1 =
         seleccionados[0];
 
+
     const elemento2 =
         seleccionados[1];
+
+
+    const textos =
+        textosResultado[
+            idiomaActual
+        ];
 
 
     if (!elemento1 || !elemento2) {
@@ -632,12 +984,11 @@ function combinar() {
                 </div>
 
                 <h3>
-                    Faltan elementos
+                    ${textos.faltanTitulo}
                 </h3>
 
                 <p>
-                    Coloca dos elementos
-                    en el laboratorio.
+                    ${textos.faltanDescripcion}
                 </p>
 
             </div>
@@ -667,13 +1018,11 @@ function combinar() {
                 </div>
 
                 <h3>
-                    Sin combinación registrada
+                    ${textos.sinCombinacionTitulo}
                 </h3>
 
                 <p>
-                    Chemix todavía no tiene
-                    esta combinación en su
-                    base de datos.
+                    ${textos.sinCombinacionDescripcion}
                 </p>
 
             </div>
@@ -700,13 +1049,11 @@ function combinar() {
                 </div>
 
                 <h3>
-                    Sin combinación registrada
+                    ${textos.sinCombinacionTitulo}
                 </h3>
 
                 <p>
-                    Chemix todavía no tiene
-                    esta combinación en su
-                    base de datos.
+                    ${textos.sinCombinacionDescripcion}
                 </p>
 
             </div>
@@ -718,19 +1065,15 @@ function combinar() {
     }
 
 
-    /*
-       Guardamos los productos actuales
-       para que el selector pueda
-       actualizarlos posteriormente.
-    */
-
     window.productosActuales =
         productos;
 
 
-    /* =================================================
-       RESULTADO
-    ================================================= */
+    const textoResultados =
+        productos.length === 1
+            ? textos.resultadoSingular
+            : textos.resultadoPlural;
+
 
     resultado.innerHTML = `
 
@@ -757,13 +1100,7 @@ function combinar() {
 
                 ${productos.length}
 
-                resultado${
-
-                    productos.length === 1
-                        ? ""
-                        : "s"
-
-                }
+                ${textoResultados}
 
             </h3>
 
@@ -798,12 +1135,18 @@ function combinar() {
                                 <div
                                     class="product-type"
                                 >
-                                    ${producto.type}
+                                    ${obtenerTipoProducto(
+                                        producto
+                                    )}
                                 </div>
 
 
-                                <p>
-                                    ${producto.description}
+                                <p
+                                    class="product-description"
+                                >
+                                    ${obtenerDescripcionProducto(
+                                        producto
+                                    )}
                                 </p>
 
                             </div>
