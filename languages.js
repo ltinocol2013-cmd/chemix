@@ -1,3 +1,248 @@
+const elementNames = {
+    es: {
+        1: "Hidrógeno",
+        2: "Helio",
+        3: "Litio",
+        4: "Berilio",
+        5: "Boro",
+        6: "Carbono",
+        7: "Nitrógeno",
+        8: "Oxígeno",
+        9: "Flúor",
+        10: "Neón",
+        11: "Sodio",
+        12: "Magnesio",
+        13: "Aluminio",
+        14: "Silicio",
+        15: "Fósforo",
+        16: "Azufre",
+        17: "Cloro",
+        18: "Argón",
+        19: "Potasio",
+        20: "Calcio",
+        21: "Escandio",
+        22: "Titanio",
+        23: "Vanadio",
+        24: "Cromo",
+        25: "Manganeso",
+        26: "Hierro",
+        27: "Cobalto",
+        28: "Níquel",
+        29: "Cobre",
+        30: "Zinc",
+        31: "Galio",
+        32: "Germanio",
+        33: "Arsénico",
+        34: "Selenio",
+        35: "Bromo",
+        36: "Kriptón",
+        37: "Rubidio",
+        38: "Estroncio",
+        39: "Itrio",
+        40: "Circonio",
+        41: "Niobio",
+        42: "Molibdeno",
+        43: "Tecnecio",
+        44: "Rutenio",
+        45: "Rodio",
+        46: "Paladio",
+        47: "Plata",
+        48: "Cadmio",
+        49: "Indio",
+        50: "Estaño",
+        51: "Antimonio",
+        52: "Telurio",
+        53: "Yodo",
+        54: "Xenón",
+        55: "Cesio",
+        56: "Bario",
+        57: "Lantano",
+        58: "Cerio",
+        59: "Praseodimio",
+        60: "Neodimio",
+        61: "Prometio",
+        62: "Samario",
+        63: "Europio",
+        64: "Gadolinio",
+        65: "Terbio",
+        66: "Disprosio",
+        67: "Holmio",
+        68: "Erbio",
+        69: "Tulio",
+        70: "Iterbio",
+        71: "Lutecio",
+        72: "Hafnio",
+        73: "Tantalio",
+        74: "Wolframio",
+        75: "Renio",
+        76: "Osmio",
+        77: "Iridio",
+        78: "Platino",
+        79: "Oro",
+        80: "Mercurio",
+        81: "Talio",
+        82: "Plomo",
+        83: "Bismuto",
+        84: "Polonio",
+        85: "Astato",
+        86: "Radón",
+        87: "Francio",
+        88: "Radio",
+        89: "Actinio",
+        90: "Torio",
+        91: "Protactinio",
+        92: "Uranio",
+        93: "Neptunio",
+        94: "Plutonio",
+        95: "Americio",
+        96: "Curio",
+        97: "Berkelio",
+        98: "Californio",
+        99: "Einsteinio",
+        100: "Fermio",
+        101: "Mendelevio",
+        102: "Nobelio",
+        103: "Lawrencio",
+        104: "Rutherfordio",
+        105: "Dubnio",
+        106: "Seaborgio",
+        107: "Bohrio",
+        108: "Hassio",
+        109: "Meitnerio",
+        110: "Darmstadtio",
+        111: "Roentgenio",
+        112: "Copernicio",
+        113: "Nihonio",
+        114: "Flerovio",
+        115: "Moscovio",
+        116: "Livermorio",
+        117: "Teneso",
+        118: "Oganesón"
+    },
+
+    en: {
+        1: "Hydrogen",
+        2: "Helium",
+        3: "Lithium",
+        4: "Beryllium",
+        5: "Boron",
+        6: "Carbon",
+        7: "Nitrogen",
+        8: "Oxygen",
+        9: "Fluorine",
+        10: "Neon",
+        11: "Sodium",
+        12: "Magnesium",
+        13: "Aluminium",
+        14: "Silicon",
+        15: "Phosphorus",
+        16: "Sulfur",
+        17: "Chlorine",
+        18: "Argon",
+        19: "Potassium",
+        20: "Calcium",
+        21: "Scandium",
+        22: "Titanium",
+        23: "Vanadium",
+        24: "Chromium",
+        25: "Manganese",
+        26: "Iron",
+        27: "Cobalt",
+        28: "Nickel",
+        29: "Copper",
+        30: "Zinc",
+        31: "Gallium",
+        32: "Germanium",
+        33: "Arsenic",
+        34: "Selenium",
+        35: "Bromine",
+        36: "Krypton",
+        37: "Rubidium",
+        38: "Strontium",
+        39: "Yttrium",
+        40: "Zirconium",
+        41: "Niobium",
+        42: "Molybdenum",
+        43: "Technetium",
+        44: "Ruthenium",
+        45: "Rhodium",
+        46: "Palladium",
+        47: "Silver",
+        48: "Cadmium",
+        49: "Indium",
+        50: "Tin",
+        51: "Antimony",
+        52: "Tellurium",
+        53: "Iodine",
+        54: "Xenon",
+        55: "Caesium",
+        56: "Barium",
+        57: "Lanthanum",
+        58: "Cerium",
+        59: "Praseodymium",
+        60: "Neodymium",
+        61: "Promethium",
+        62: "Samarium",
+        63: "Europium",
+        64: "Gadolinium",
+        65: "Terbium",
+        66: "Dysprosium",
+        67: "Holmium",
+        68: "Erbium",
+        69: "Thulium",
+        70: "Ytterbium",
+        71: "Lutetium",
+        72: "Hafnium",
+        73: "Tantalum",
+        74: "Tungsten",
+        75: "Rhenium",
+        76: "Osmium",
+        77: "Iridium",
+        78: "Platinum",
+        79: "Gold",
+        80: "Mercury",
+        81: "Thallium",
+        82: "Lead",
+        83: "Bismuth",
+        84: "Polonium",
+        85: "Astatine",
+        86: "Radon",
+        87: "Francium",
+        88: "Radium",
+        89: "Actinium",
+        90: "Thorium",
+        91: "Protactinium",
+        92: "Uranium",
+        93: "Neptunium",
+        94: "Plutonium",
+        95: "Americium",
+        96: "Curium",
+        97: "Berkelium",
+        98: "Californium",
+        99: "Einsteinium",
+        100: "Fermium",
+        101: "Mendelevium",
+        102: "Nobelium",
+        103: "Lawrencium",
+        104: "Rutherfordium",
+        105: "Dubnium",
+        106: "Seaborgium",
+        107: "Bohrium",
+        108: "Hassium",
+        109: "Meitnerium",
+        110: "Darmstadtium",
+        111: "Roentgenium",
+        112: "Copernicium",
+        113: "Nihonium",
+        114: "Flerovium",
+        115: "Moscovium",
+        116: "Livermorium",
+        117: "Tennessine",
+        118: "Oganesson"
+    }
+};
+
+
 const translations = {
 
     es: {
@@ -33,7 +278,6 @@ const translations = {
         footerSmall:
             "Proyecto educativo creado con HTML, CSS y JavaScript"
     },
-
 
     en: {
         pageTitle:
@@ -74,6 +318,66 @@ const translations = {
 
 
 /* =========================================================
+   ACTUALIZAR NOMBRES DE LOS ELEMENTOS
+========================================================= */
+
+function actualizarNombresElementos(language) {
+
+    const nombres =
+        elementNames[language] || elementNames.es;
+
+
+    document
+        .querySelectorAll(".element")
+        .forEach(tarjeta => {
+
+            const numero =
+                Number(tarjeta.dataset.numero);
+
+            const nombre =
+                tarjeta.querySelector(".name");
+
+
+            if (nombre && nombres[numero]) {
+
+                nombre.textContent =
+                    nombres[numero];
+
+            }
+
+        });
+
+
+    document
+        .querySelectorAll(".element-slot")
+        .forEach(slot => {
+
+            const numero =
+                Number(
+                    slot.querySelector(".number")?.textContent
+                );
+
+            const nombre =
+                slot.querySelector(".name");
+
+
+            if (
+                nombre &&
+                numero &&
+                nombres[numero]
+            ) {
+
+                nombre.textContent =
+                    nombres[numero];
+
+            }
+
+        });
+
+}
+
+
+/* =========================================================
    CAMBIADOR DE IDIOMA
 ========================================================= */
 
@@ -101,54 +405,115 @@ document.addEventListener("DOMContentLoaded", () => {
             text.pageTitle;
 
 
-        document.getElementById("subtitle")
-            .textContent =
-            text.subtitle;
+        const subtitle =
+            document.getElementById("subtitle");
+
+        if (subtitle) {
+            subtitle.textContent =
+                text.subtitle;
+        }
 
 
-        document.getElementById("periodic-title")
-            .textContent =
-            text.periodicTable;
+        const periodicTitle =
+            document.getElementById("periodic-title");
+
+        if (periodicTitle) {
+            periodicTitle.textContent =
+                text.periodicTable;
+        }
 
 
-        document.getElementById("periodic-description")
-            .textContent =
-            text.periodicDescription;
+        const periodicDescription =
+            document.getElementById(
+                "periodic-description"
+            );
+
+        if (periodicDescription) {
+            periodicDescription.textContent =
+                text.periodicDescription;
+        }
 
 
-        document.getElementById("laboratory-title")
-            .textContent =
-            text.laboratory;
+        const laboratoryTitle =
+            document.getElementById(
+                "laboratory-title"
+            );
+
+        if (laboratoryTitle) {
+            laboratoryTitle.textContent =
+                text.laboratory;
+        }
 
 
-        document.getElementById("laboratory-description")
-            .textContent =
-            text.laboratoryDescription;
+        const laboratoryDescription =
+            document.getElementById(
+                "laboratory-description"
+            );
+
+        if (laboratoryDescription) {
+            laboratoryDescription.textContent =
+                text.laboratoryDescription;
+        }
 
 
-        document.getElementById("combine-button")
-            .textContent =
-            text.combine;
+        const combineButton =
+            document.getElementById(
+                "combine-button"
+            );
+
+        if (combineButton) {
+            combineButton.textContent =
+                text.combine;
+        }
 
 
-        document.getElementById("empty-title")
-            .textContent =
-            text.emptyLaboratory;
+        const emptyTitle =
+            document.getElementById(
+                "empty-title"
+            );
+
+        if (emptyTitle) {
+            emptyTitle.textContent =
+                text.emptyLaboratory;
+        }
 
 
-        document.getElementById("empty-description")
-            .textContent =
-            text.emptyLaboratoryDescription;
+        const emptyDescription =
+            document.getElementById(
+                "empty-description"
+            );
+
+        if (emptyDescription) {
+            emptyDescription.textContent =
+                text.emptyLaboratoryDescription;
+        }
 
 
-        document.getElementById("footer-text")
-            .textContent =
-            text.footer;
+        const footerText =
+            document.getElementById(
+                "footer-text"
+            );
+
+        if (footerText) {
+            footerText.textContent =
+                text.footer;
+        }
 
 
-        document.getElementById("footer-small")
-            .textContent =
-            text.footerSmall;
+        const footerSmall =
+            document.getElementById(
+                "footer-small"
+            );
+
+        if (footerSmall) {
+            footerSmall.textContent =
+                text.footerSmall;
+        }
+
+
+        actualizarNombresElementos(
+            language
+        );
 
 
         localStorage.setItem(
@@ -159,35 +524,46 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
 
-    languageSelect.addEventListener(
-        "change",
-        () => {
+    if (languageSelect) {
 
-            changeLanguage(
-                languageSelect.value
+        languageSelect.addEventListener(
+            "change",
+            () => {
+
+                changeLanguage(
+                    languageSelect.value
+                );
+
+            }
+        );
+
+
+        const savedLanguage =
+            localStorage.getItem(
+                "chemix-language"
             );
 
+
+        if (
+            savedLanguage &&
+            translations[savedLanguage]
+        ) {
+
+            languageSelect.value =
+                savedLanguage;
+
+            changeLanguage(
+                savedLanguage
+            );
+
+        } else {
+
+            languageSelect.value =
+                "es";
+
+            changeLanguage("es");
+
         }
-    );
-
-
-    const savedLanguage =
-        localStorage.getItem(
-            "chemix-language"
-        );
-
-
-    if (
-        savedLanguage &&
-        translations[savedLanguage]
-    ) {
-
-        languageSelect.value =
-            savedLanguage;
-
-        changeLanguage(
-            savedLanguage
-        );
 
     } else {
 
