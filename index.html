@@ -4,15 +4,25 @@
 <head>
     <meta charset="UTF-8">
 
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
 
     <title id="page-title">
         Chemix — Laboratorio de Química
     </title>
 
-    <link rel="icon" href="./favicon.png" type="image/png">
+    <link
+        rel="icon"
+        href="./favicon.png"
+        type="image/png"
+    >
 
-    <link rel="stylesheet" href="./style.css?v=3">
+    <link
+        rel="stylesheet"
+        href="./style.css?v=4"
+    >
 </head>
 
 <body>
@@ -33,7 +43,10 @@
             <span>Chemix</span>
         </div>
 
-        <p class="subtitle" id="subtitle">
+        <p
+            class="subtitle"
+            id="subtitle"
+        >
             Explora los elementos y descubre qué ocurre al combinarlos
         </p>
 
@@ -56,10 +69,84 @@
 
             </div>
 
+
             <div
                 id="periodic-table"
                 class="periodic-table"
             ></div>
+
+
+            <div
+                id="element-info"
+                class="element-info"
+                style="display: none;"
+            >
+
+                <div class="element-info-header">
+
+                    <div
+                        id="element-info-symbol"
+                        class="element-info-symbol"
+                    ></div>
+
+                    <div class="element-info-title">
+
+                        <h2 id="element-info-name">
+                            Elemento
+                        </h2>
+
+                        <p id="element-info-number">
+                            Número atómico: —
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="element-info-data">
+
+                    <div class="element-info-item">
+
+                        <span
+                            id="element-info-mass-label"
+                            class="element-info-label"
+                        >
+                            Masa atómica
+                        </span>
+
+                        <span
+                            id="element-info-mass"
+                            class="element-info-value"
+                        >
+                            —
+                        </span>
+
+                    </div>
+
+
+                    <div class="element-info-item">
+
+                        <span
+                            id="element-info-electron-label"
+                            class="element-info-label"
+                        >
+                            Configuración electrónica
+                        </span>
+
+                        <span
+                            id="element-info-electron"
+                            class="element-info-value electron-configuration"
+                        >
+                            —
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
 
             <div class="legend">
 
@@ -133,8 +220,6 @@
             </div>
 
 
-            <!-- SELECTOR DE NOMENCLATURA -->
-
             <div class="nomenclature-selector">
 
                 <label for="nomenclature-select">
@@ -195,7 +280,10 @@
             </div>
 
 
-            <div id="result" class="result">
+            <div
+                id="result"
+                class="result"
+            >
 
                 <div class="empty-result">
 
@@ -233,6 +321,13 @@
             Proyecto educativo creado con HTML, CSS y JavaScript
         </p>
 
+        <p
+            class="footer-author"
+            id="footer-author"
+        >
+            Creado por Lucas
+        </p>
+
     </footer>
 
 
@@ -240,9 +335,9 @@
 
     <script src="./combinations.js?v=2"></script>
 
-    <script src="./script.js?v=2"></script>
+    <script src="./script.js?v=3"></script>
 
-    <script src="./languages.js?v=3"></script>
+    <script src="./languages.js?v=4"></script>
 
 </body>
 
